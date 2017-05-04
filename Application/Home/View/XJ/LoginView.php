@@ -18,9 +18,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<form role="form" class="form-horizontal" action="http://localhost:8080/freeBicycle/index.php?m=Home&c=Xujie&a=login" method="post" enctype="multipart/form-data" style="margin: 150px auto">
-				<input name="c" value="UserWYX" type="hidden">
-				<input name="a" value="Login" type="hidden">
+			<form role="form" class="form-horizontal" action="http://localhost:8080/freeBicycle/index.php/Home/Xujie/login" method="post" enctype="multipart/form-data" style="margin: 150px auto">
     			<div class="panel panel-info" style="width: 300px;">
     				<div class="panel-heading">
     			    		<div class="panel-title">请登录</div>
