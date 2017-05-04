@@ -6,23 +6,66 @@ class BicycleListYRBController extends Controller{
     private $BicycleListYRBModel;
     public function __construct(){
         parent::__construct();
-        $this->BicycleListYRBModel = M(tb_bicycle);
+        $this->BicycleListYRBModel = M("tb_bicycle");
     }
     /**
      * 查询单车信息
+     * @param number $pageNo
+     * @param number $pageSize
      */
-    public function BicycListLoad($pageNo=1,$pageSize=10){
+    public function BicycleList($pageNo=1,$pageSize=10){
         //总条数
         $total = $this->BicycleListYRBModel->count();
         //数据
-        $rows = $this->BicycleListYRBModel->table("tb_bicycle b,tb_bicycle_state bs,tb_rent r,tb_user u")
-        ->where("b.bs_id=bs.bs_id and b.re_id=r.re_id and r.u_id=u.u_id")
-        ->field("b.bi_joureny as joureny,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account")->page($pageNo,$pageSize)->select();
+//         $rows = $this->BicycleListYRBModel->table("tb_bicycle b,tb_bicycle_state bs,tb_rent r,tb_user u")
+//         ->where("b.bs_id=bs.bs_id and b.re_id=r.re_id and r.u_id=u.u_id")
+//         ->field("b.bi_id as id,b.bi_no as no,b.bi_model as model,b.bi_putTime as time,b.bi_NumOfUse as num,
+//             b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state")->page($pageNo,$pageSize)->select();
+        $rows = $this->BicycleListYRBModel->table("tb_bicycle b")->join("tb_bicycle_state bs on b.bs_id=bs.bs_id","LEFT")->join("tb_rent r on b.re_id=r.re_id","LEFT")
+        ->join("tb_user u on r.u_id=u.u_id","LEFT")
+        ->field("b.bi_id as id,b.bi_no as no,b.bi_model as model,b.bi_putTime as time,b.bi_NumOfUse as num,
+            b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state")
+        ->page($pageNo,$pageSize)->select();
         //数组
         $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize);
         //发送
         $this->assign("page",$page);
-        $this->display();
+        $this->display(bicycleList);
+    }
+    /**
+     * 添加，修改单车信息
+     * @param unknown $ctr
+     * @param unknown $no   单车编号
+     * @param unknown $model    单车型号
+     * @param unknown $puttime  投放时间
+     * @param unknown $name 状态名
+     */
+    public function BicycleListEdit($ctr,$no,$model,$puttime,$name){
+        if($ctr>0){
+            $data = array(
+                'bi_no'=>$no,
+                'bi_model'=>$model,
+                'bi_putTime'=>$puttime,
+                'bs_id'=>$name
+            );
+            $this->BicycleListYRBModel->field("bi_no,bi_model,bi_putTime,bi_id")->add($data);
+            $this->BicycleList();
+        }else {
+            $data=array(
+                'bi_no'=>$no,
+                'bs_id'=>$name
+            );
+            $this->BicycleListYRBModel->field("bs_id")->where("bi_no=%d",$data['bi_no'])->save($data);
+            $this->BicycleList();
+        }
+    }
+    /**
+     * 根据编号查询单车，用于回填
+     * @param unknown $no
+     */
+    public function BicycleSearch($no){
+        $rows = $this->BicycleListYRBModel->where("bi_no = '$no'")->select();
+        $this->ajaxReturn($rows);
     }
 }
 

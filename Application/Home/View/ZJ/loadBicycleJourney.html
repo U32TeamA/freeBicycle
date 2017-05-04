@@ -14,19 +14,19 @@
 		</script>
 	</head>
 	<body>
-		<table class="table table-striped table-bordered table-condensed" style="margin-top:1%;">
+		<table class="table table-striped table-bordered table-condensed" style="width:98%;margin:10px 10px 0 10px;">
 			<tr>
 				<th>单车编号</th>
 				<th>单车型号</th>
-				<th>单车行程情况</th>
+				<th>单车行程情况(单位：千米)</th>
 				<th>单车投放时间</th>
 			</tr>
-			<foreach name="page.rows" item="bicycle">
+			<foreach name="page.rows" item="rows">
 				<tr>
-					<td>{$bicycle.bi_no}</td>
-					<td>{$user.bi_model}</td>
-					<td>{$user.bi_journey}</td>
-					<td>{$user.bi_putTime}</td>
+					<td>{$rows.bi_no}</td>
+					<td>{$rows.bi_model}</td>
+					<td>{$rows.bi_journey}</td>
+					<td>{$rows.bi_puttime}</td>
 				</tr>
 			</foreach>
 		</table>
