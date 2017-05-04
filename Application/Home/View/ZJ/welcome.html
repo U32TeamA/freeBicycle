@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>欢迎界面</title>
+		<link rel="stylesheet" href="" />
+		<script type="text/javascript" src=""></script>
+		<script type="text/javascript" src=""></script>
+		<style type="text/css">
+			ul,li{
+				text-decoration: none;
+			}
+		</style>
+		<script type="text/javascript">
+			$(function(){
+				$(".sys").click(function(){
+					if($(this).attr("aa") == 0){
+						$(this).parent().find("ul").show(300);
+						$(this).attr("aa",1);
+					}else{
+						$(this).parent().find("ul").hide(300);
+						$(this).attr("aa",0);
+					}
+				});	
+			})
+		</script>
+	</head>
+	<body>
+		<div class="container" style="width:900px;">
+			<div class="header" style="height:100px;margin-top: 20px;border:1px blue solid;font-size:26px;text-align:center;line-height:100px;">
+				<div class="col-md-6" style="margin-left:20px;">		
+					<span>欢迎你,{$Think.session.loginUser.truename}</span>
+				</div>
+				<div class="col-md-4">
+					<a href="denglu.php">退出</a>
+				</div>
+			</div>
+			<div class="row" style="height:500px;">
+				<div class="col-md-2" style="border:1px blue solid;margin-left:15px;height:500px;">
+					<ul style="list-style: none;margin-left:-10px;">
+					<?php 
+				    foreach ($_SESSION["menus"] as $m){
+				       if($m[5] == 2){
+				           echo "<li>";
+				           echo    "<span class='sys' aa='0' style='cursor: pointer;height:30px;line-height:30px'>$m[1]</span>";
+				           echo    "<ul style='display:none;list-style: disc;'>";
+				           foreach ($_SESSION["menus"] as $m3){
+				               if($m3[5] == 3 && $m3[3] == $m[0]){
+				                   echo "<li style='margin-left:-10px;'>
+    							             <a href='$m3[2]' target='ifr'>$m3[1]</a>
+    						             </li>";
+				               }
+				           }
+				           echo    "</ul>";
+				           echo "</li>";
+				       }
+				    }
+					?>				
+					</ul>
+				</div>
+				<div class="col-md-9" style="border:1px blue solid;height:500px;width:80%"> 
+                    <iframe name="ifr" width="100%" height="100%" style="border:none"> 
+                   
+                    </iframe> 
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
