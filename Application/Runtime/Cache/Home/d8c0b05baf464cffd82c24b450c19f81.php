@@ -5,29 +5,18 @@
 		<meta charset='utf-8'>
 		<title>单车一览</title>
 		<link rel="stylesheet" href=http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css>
+		<link rel="stylesheet" href=http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap-datetimepicker.min.css>
 		<style type="text/css">
 			#topbtn span{margin-right:5px;}
             .search{height:33px;margin-left:10px;padding:0;}
+			#searchForm input{width:25%;}
+			.table tr th{text-align:center;}
 		</style>
 		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js></script>
 		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js></script>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap-datetimepicker.min.js></script>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js></script>
 		<script type="text/javascript">
-		//验证
-		function inblur(obj,reg){
-			$(obj).parent().removeClass("has-success has-error");
-			$(obj).parent().find("span").removeClass("glyphicon-remove glyphicon-remove");
-			if(reg.test(obj.value)){
-			$(obj).parent().addClass("has-success");
-			$(obj).parent().find("span").addClass("glyphicon-ok").css("color","green").show();
-			$(obj).tooltip("hide");
-				return true;
-			}else{
-				$(obj).parent().find("span").addClass("glyphicon-remove").css("color","red").show();
-				$(obj).tooltip("show");
-				$(obj).parent().addClass("has-error");
-					return false;
-			}
-		}
 		//判断传入的值选择增加或者修改
 		function addedit(type){
 			if(type == 1){
@@ -52,6 +41,7 @@
 				$("#addandedit").modal("toggle");	
 			}
 		}
+		
 		//type值为0，下一页，为-1，上一页，为正到指定页
 		function turnPage(pageNo,type){
 			var pageNo = parseInt(pageNo);
@@ -72,6 +62,52 @@
 			}
 			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleList/pageNo/"+pageNo;
 		}
+		//删除单车报废
+ 		function hide(){
+ 			var num = $("input[name=num]:checked");
+			if(num.length != 1){
+				alert("请选择一项进行操作！");
+				return;
+			}
+			if(confirm('确认报废该车吗？')){
+				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListHide",{
+					"no":num.val()	
+				},function(data){
+						
+				},"json");
+			}else{
+				alert('操作已经取消！');
+				return;
+			}
+ 		}
+		//验证
+		function inblur(obj,reg){
+			$(obj).parent().removeClass("has-success has-error");
+			$(obj).parent().find("span").removeClass("glyphicon-remove glyphicon-remove");
+			if(reg.test(obj.value)){
+			$(obj).parent().addClass("has-success");
+			$(obj).parent().find("span").addClass("glyphicon-ok").css("color","green").show();
+			$(obj).tooltip("hide");
+				return true;
+			}else{
+				$(obj).parent().find("span").addClass("glyphicon-remove").css("color","red").show();
+				$(obj).tooltip("show");
+				$(obj).parent().addClass("has-error");
+					return false;
+			}
+		}
+		$(function(){
+			$("#puttime").datetimepicker({
+				   format:'yyyy-mm-dd',
+				        weekStart: 1,
+				        todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				        showMeridian: 1
+				    });
+		});
 		</script>
 	</head>
 	<body>
@@ -80,32 +116,49 @@
     		  <button type="button" class="btn btn-default" onclick="turnPage(1,1);"><span class="glyphicon glyphicon-refresh"></span>刷新</button>
     		  <button type="button" class="btn btn-default" onclick="addedit(1);"><span class="glyphicon glyphicon-plus"></span>新增</button>
     		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
-    		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>删除</button>
+    		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
     		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
-    		  <div>
-    		  	<input type="search" class="search" placeholder="输入关键字">
-    			<input type="button" class="btn btn-default" value="快速检索">
-    		  </div>
-    		</div>
-			<table class="table table-striped table-bordered table-condensed" style="width:98%;margin:10px 10px 0 10px;">
+    		  <!-- 条件搜索 -->
+	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" metch="post">
+	   		  	<div class="input-group">
+	   		  		<input type="text" class="form-control" placeholder="用户帐号">
+			      	<input type="text" class="form-control" placeholder="单车编号">
+			      	<input type="text" class="form-control" placeholder="单车型号">
+			      	<input type="text" class="form-control" placeholder="单车状态">
+			      	<span class="input-group-btn">
+			        	<button class="btn btn-default" type="submit">搜索</button>
+			      	</span>
+			    	</div>
+			  	</div>
+	   		  </form>
+			<table class="table table-striped table-bordered table-condensed text-center table-hover" style="width:98%;margin:10px 10px 0 10px;">
 				<tr>
-					<th><input type="checkbox" name="nums"/></th><th>单车编号</th><th>单车型号</th><th>投放时间</th><th>使用次数</th><th>行程</th><th>状态</th>
-					<th>租赁开始时间</th><th>租赁结束时间</th><th>用户帐号</th><th>正在使用</th>
+					<th><input type="checkbox" name="nums"/></th><th>单车编号</th><th>单车型号</th><th>用户帐号</th><th>正在使用</th>
+					<th>投放时间</th><th>使用次数</th><th>行程</th><th>状态</th><th>租赁开始时间</th><th>租赁结束时间</th><th>是否报废</th>
 				</tr>
 				<?php if(is_array($page["rows"])): $i = 0; $__LIST__ = $page["rows"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$rows): $mod = ($i % 2 );++$i;?><tr>
 						<td><input type="checkbox" name="num" value="<?php echo ($rows["no"]); ?>"/></td>
 						<td><?php echo ($rows["no"]); ?></td>
 						<td><?php echo ($rows["model"]); ?></td>
+						<td><?php echo ($rows["account"]); ?></td>
+    					<td>
+    						<script>
+								if(<?php echo ($rows["state"]); ?>){
+									document.write("是");
+								}else{
+									document.write("否");
+								}
+    						</script>
+    					</td>
 						<td><?php echo ($rows["time"]); ?></td>
 						<td><?php echo ($rows["num"]); ?></td>
     					<td><?php echo ($rows["journey"]); ?></td>
     					<td><?php echo ($rows["name"]); ?></td>
     					<td><?php echo ($rows["begin"]); ?></td>
     					<td><?php echo ($rows["end"]); ?></td>
-    					<td><?php echo ($rows["account"]); ?></td>
     					<td>
     						<script>
-								if(<?php echo ($rows["state"]); ?>){
+								if(<?php echo ($rows["scrap"]); ?>){
 									document.write("是");
 								}else{
 									document.write("否");
@@ -165,7 +218,7 @@
 					<div class="form-group form-inline">
 						<div class="input-group ">
 							<div class="input-group-addon">投放时间</div>
-							<input id="puttime" name="puttime" type="text" class="form-control"/>
+							<input id="puttime" name="puttime" type="text" class="form-control input-append date" readonly/>
 							<span class="glyphicon form-control-feedback"></span>
 						</div>
 					</div>
