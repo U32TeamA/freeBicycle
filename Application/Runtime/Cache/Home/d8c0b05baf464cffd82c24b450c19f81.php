@@ -1,0 +1,193 @@
+<?php if (!defined('THINK_PATH')) exit(); ?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>单车一览</title>
+		<link rel="stylesheet" href=http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css>
+		<style type="text/css">
+			#topbtn span{margin-right:5px;}
+            .search{height:33px;margin-left:10px;padding:0;}
+		</style>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js></script>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js></script>
+		<script type="text/javascript">
+		//验证
+		function inblur(obj,reg){
+			$(obj).parent().removeClass("has-success has-error");
+			$(obj).parent().find("span").removeClass("glyphicon-remove glyphicon-remove");
+			if(reg.test(obj.value)){
+			$(obj).parent().addClass("has-success");
+			$(obj).parent().find("span").addClass("glyphicon-ok").css("color","green").show();
+			$(obj).tooltip("hide");
+				return true;
+			}else{
+				$(obj).parent().find("span").addClass("glyphicon-remove").css("color","red").show();
+				$(obj).tooltip("show");
+				$(obj).parent().addClass("has-error");
+					return false;
+			}
+		}
+		//判断传入的值选择增加或者修改
+		function addedit(type){
+			if(type == 1){
+				$("#ctr").val("1");
+				$("#addandedit").modal("toggle");
+			}else{
+				var num = $("input[name=num]:checked");
+				if(num.length != 1){
+					alert("请选择一项进行操作！");
+					return;
+				}
+				$("#ctr").val("0");
+				//回填
+				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleSearch",{
+					"no":num.val()
+				},function(data){
+					alert(data);
+					$("#no").val(data[0]['bi_no']);
+					$("#model").val(data[0]['bi_model']);
+					$("#puttime").val(data[0]['bi_putTime']);
+				},"json");
+				$("#addandedit").modal("toggle");	
+			}
+		}
+		//type值为0，下一页，为-1，上一页，为正到指定页
+		function turnPage(pageNo,type){
+			var pageNo = parseInt(pageNo);
+			if(type == 0){
+				pageNo += 1;
+				if(pageNo > parseInt('<?php echo ($page["total"]); ?>'/10)+1){
+					alert('已经是最后一页了！');
+					pageNo = parseInt('<?php echo ($page["total"]); ?>'/10)+1;
+				}
+			}else if(type == -1){
+				pageNo -= 1;
+				if(pageNo == 0){
+					alert('已经是第一页了！');
+					pageNo = 1;
+				}
+			}else{
+				pageNo = type;
+			}
+			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleList/pageNo/"+pageNo;
+		}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">
+    		  <button type="button" class="btn btn-default" onclick="turnPage(1,1);"><span class="glyphicon glyphicon-refresh"></span>刷新</button>
+    		  <button type="button" class="btn btn-default" onclick="addedit(1);"><span class="glyphicon glyphicon-plus"></span>新增</button>
+    		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
+    		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span>删除</button>
+    		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
+    		  <div>
+    		  	<input type="search" class="search" placeholder="输入关键字">
+    			<input type="button" class="btn btn-default" value="快速检索">
+    		  </div>
+    		</div>
+			<table class="table table-striped table-bordered table-condensed" style="width:98%;margin:10px 10px 0 10px;">
+				<tr>
+					<th><input type="checkbox" name="nums"/></th><th>单车编号</th><th>单车型号</th><th>投放时间</th><th>使用次数</th><th>行程</th><th>状态</th>
+					<th>租赁开始时间</th><th>租赁结束时间</th><th>用户帐号</th><th>正在使用</th>
+				</tr>
+				<?php if(is_array($page["rows"])): $i = 0; $__LIST__ = $page["rows"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$rows): $mod = ($i % 2 );++$i;?><tr>
+						<td><input type="checkbox" name="num" value="<?php echo ($rows["no"]); ?>"/></td>
+						<td><?php echo ($rows["no"]); ?></td>
+						<td><?php echo ($rows["model"]); ?></td>
+						<td><?php echo ($rows["time"]); ?></td>
+						<td><?php echo ($rows["num"]); ?></td>
+    					<td><?php echo ($rows["journey"]); ?></td>
+    					<td><?php echo ($rows["name"]); ?></td>
+    					<td><?php echo ($rows["begin"]); ?></td>
+    					<td><?php echo ($rows["end"]); ?></td>
+    					<td><?php echo ($rows["account"]); ?></td>
+    					<td>
+    						<script>
+								if(<?php echo ($rows["state"]); ?>){
+									document.write("是");
+								}else{
+									document.write("否");
+								}
+    						</script>
+    					</td>
+					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+			</table>
+			<!-- 翻页按钮 -->
+			<nav aria-label="Page navigation" class="text-center">
+			  <ul class="pagination">
+			  	<li><a href="javascript:void(0);">第<?php echo ($page["pageNo"]); ?>页</a></li>
+			    <li>
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',-1);" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',1);">1</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',2);">2</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',3);">3</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',4);">4</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',5);">5</a></li>
+			    <li>
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',0);" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="javascript:void(0);">共<?php echo ($page["total"]); ?>条数据</a></li>
+			  </ul>
+			</nav>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="addandedit">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">更改状态</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListEdit" method="post" class="text-center">
+		        	<input type="hidden" name="ctr" id="ctr"/>
+		        	<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">单车编号</div>
+							<input id="no" name="no" type="text" class="form-control" onblur="inblur(this,/^[0-9]{5}$/)"/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">单车车型</div>
+							<input id="model" name="model" type="text" class="form-control" onblur="inblur(this,/([^\s])/)"/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">投放时间</div>
+							<input id="puttime" name="puttime" type="text" class="form-control"/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+		        	<div class="form-group form-inline">
+						<div class="input-group">
+							<div class="input-group-addon">单车状态</div>
+							<select id="name" name="name" class="form-control" style="width:170px">
+								<option value="6">正常</option>
+								<option value="1">低频</option>
+								<option value="3">异常</option>
+								<option value="5">消失</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+			        <button type="button" class="btn btn-default">取消</button>
+			        <input type="submit" class="btn btn-primary" value="确认">
+			      </div>
+		        </form>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div>	
+	</body>
+</html>
