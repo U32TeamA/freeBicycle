@@ -3,17 +3,17 @@
 	<head>
 		<meta charset=utf-8>
 		<title>登录</title>
-		<link rel="stylesheet" href="http://localhost:8080/personnelManagement/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css">
 		
-		<script src="http://localhost:8080/personnelManagement/bootstrap/js/jquery-1.11.0.min.js"></script>
+		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.11.0.min.js"></script>
 		
-		<script src="http://localhost:8080/personnelManagement/bootstrap/js/bootstrap.min.js"></script>
+		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			
 		</script>
 		<style type="text/css">
         .panel{margin: auto;}
-        body{background-image: url("../Public/Image/Bicycle.jpg");background-size:100% 100%;background-repeat:no-repeat;}
+        body{background-image: url("http://localhost:8080/freeBicycle/Public/Image/11.jpg");background-size:100% 170%;background-repeat:no-repeat;}
 		</style>
 	</head>
 	<body>
