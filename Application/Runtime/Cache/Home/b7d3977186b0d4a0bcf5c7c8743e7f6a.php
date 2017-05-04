@@ -80,12 +80,12 @@
         					<span><?php echo ($m1["me_name"]); ?></span>
         					<ul>
         						<?php $mid1 = $m1["me_id"]; ?>
-        						<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m2): $mod = ($i % 2 );++$i; if($m2["me_leavel"] == 2 AND $m2["me_parentID"] == $mid1): ?><li>
+        						<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m2): $mod = ($i % 2 );++$i; if($m2["me_leavel"] == 2 AND $m2["me_parentid"] == $mid1): ?><li>
         									<span><?php echo ($m2["me_name"]); ?></span>
         									<ul>
         										<?php $mid2 = $m2["me_id"]; ?>
-        										<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m3): $mod = ($i % 2 );++$i; if($m3["me_leavel"] == 3 AND $m3["me_parentID"] == $mid2): ?><li>
-        													<a href="javascript:;"><?php echo ($m3["me_name"]); ?></a>
+        										<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m3): $mod = ($i % 2 );++$i; if($m3["me_leavel"] == 3 AND $m3["me_parentid"] == $mid2): ?><li>
+        													<a href="javascript:addTabs('<?php echo ($m3["me_name"]); ?>','<?php echo ($m3["me_url"]); ?>')"><?php echo ($m3["me_name"]); ?></a>
         												</li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
         									</ul>
         								</li><?php endif; endforeach; endif; else: echo "" ;endif; ?>

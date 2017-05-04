@@ -83,15 +83,15 @@
         					<ul>
         						<assign name="mid1" value="$m1.me_id"/>
         						<volist name="Think.session.menus" id="m2">
-        							<if condition="$m2.me_leavel eq 2 AND $m2.me_parentID eq $mid1">
+        							<if condition="$m2.me_leavel eq 2 AND $m2.me_parentid eq $mid1">
         								<li>
         									<span>{$m2.me_name}</span>
         									<ul>
         										<assign name="mid2" value="$m2.me_id"/>
         										<volist name="Think.session.menus" id="m3">
-        											<if condition="$m3.me_leavel eq 3 AND $m3.me_parentID eq $mid2">
+        											<if condition="$m3.me_leavel eq 3 AND $m3.me_parentid eq $mid2">
         												<li>
-        													<a href="javascript:;">{$m3.me_name}</a>
+        													<a href="javascript:addTabs('{$m3.me_name}','{$m3.me_url}')">{$m3.me_name}</a>
         												</li>
         											</if>
         										</volist>
