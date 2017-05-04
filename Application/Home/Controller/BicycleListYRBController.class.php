@@ -24,7 +24,7 @@ class BicycleListYRBController extends Controller{
         $rows = $this->BicycleListYRBModel->table("tb_bicycle b")->join("tb_bicycle_state bs on b.bs_id=bs.bs_id","LEFT")->join("tb_rent r on b.re_id=r.re_id","LEFT")
         ->join("tb_user u on r.u_id=u.u_id","LEFT")
         ->field("b.bi_id as id,b.bi_no as no,b.bi_model as model,b.bi_putTime as time,b.bi_NumOfUse as num,
-            b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state")
+            b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state,b.bi_scrap as scrap")
         ->page($pageNo,$pageSize)->select();
         //数组
         $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize);
@@ -66,6 +66,15 @@ class BicycleListYRBController extends Controller{
     public function BicycleSearch($no){
         $rows = $this->BicycleListYRBModel->where("bi_no = '$no'")->select();
         $this->ajaxReturn($rows);
+    }
+    /**
+     * 根据编号删除单车，报废
+     * @param unknown $no
+     */
+    public function BicycleListHide($no){
+        $data = array('bi_scrap'=>'1');
+        $rows = $this->BicycleListYRBModel->where("bi_no = '$no'")->save($data);
+        $this->BicycleList();
     }
 }
 
