@@ -18,9 +18,7 @@
 	</head>
 	<body>
 		<div class="container">
-			<form role="form" class="form-horizontal" action="http://localhost:8080/personnelManagement/index.php" method="post" enctype="multipart/form-data" style="margin: 150px auto">
-				<input name="c" value="UserWYX" type="hidden">
-				<input name="a" value="Login" type="hidden">
+			<form role="form" class="form-horizontal" action="http://localhost:8080/freeBicycle/index.php/Home/Xujie/login" method="post" enctype="multipart/form-data" style="margin: 150px auto">
     			<div class="panel panel-info" style="width: 300px;">
     				<div class="panel-heading">
     			    		<div class="panel-title">请登录</div>
@@ -29,13 +27,13 @@
         				<div class="form-group">					
         					<div class=" input-group"  style="margin-left:20px;margin-right:20px">
         						<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-        						<input style="height: 40px;" id="ID" name="ID" class="form-control input-sm" placeholder="账号"/>
+        						<input style="height: 40px;" id="ad_account" name="ad_account" class="form-control input-sm" placeholder="账号"/>
         					</div>
         				</div>
         				<div class="form-group">
         					<div class="input-group" style="margin-left:20px;margin-right:20px">
         						<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-        						<input style="height: 40px;" id="password" name="password" class="form-control input-sm" type="password" placeholder="密码"/>
+        						<input style="height: 40px;" id="ad_password" name="ad_password" class="form-control input-sm" type="password" placeholder="密码"/>
         					</div>
         				</div>				
         				<div class="checkbox">
