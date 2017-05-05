@@ -24,7 +24,8 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    1.8.0, 2014-03-02
  */
-define('PHPEXCEL_ROOT', 'D:/php/webapp/u322/');
+
+define('PHPEXCEL_ROOT', __DIR__."/");
 require('PHPExcel/Autoloader.php');
 /** PHPExcel root directory */
 //if (!defined('PHPEXCEL_ROOT')) {
