@@ -76,6 +76,39 @@ class BicycleListYRBController extends Controller{
         $rows = $this->BicycleListYRBModel->where("bi_no = '$no'")->save($data);
         $this->BicycleList();
     }
+    /**
+     * 组合查询单车
+     */
+    public function BicycleListSearch($suser='',$sno='',$smodel='',$sstate='',$pageNo=1,$pageSize=10){
+        //查询数组
+        $query = array();
+        if ($suser != '' && $suser != null){
+            $query['u_account']=array("LIKE","%$suser%");
+        }
+        if ($sno != '' && $sno != null){
+            $query['bi_no']=array("LIKE","%$sno%");
+        }
+        if ($smodel != '' && $smodel != null){
+            $query['bi_model']=array("LIKE","%$smodel%");
+        }
+        if ($sstate != '' && $sstate != null){
+            $query['bs_name']=array("LIKE","%$sstate%");
+        }
+        $total = $this->BicycleListYRBModel->table("tb_bicycle b")->join("tb_bicycle_state bs on b.bs_id=bs.bs_id","LEFT")->join("tb_rent r on b.re_id=r.re_id","LEFT")
+        ->join("tb_user u on r.u_id=u.u_id","LEFT")
+        ->field("b.bi_id as id,b.bi_no as no,b.bi_model as model,b.bi_putTime as time,b.bi_NumOfUse as num,
+            b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state,b.bi_scrap as scrap")
+        ->where($query)->count();
+        $rows = $this->BicycleListYRBModel->table("tb_bicycle b")->join("tb_bicycle_state bs on b.bs_id=bs.bs_id","LEFT")->join("tb_rent r on b.re_id=r.re_id","LEFT")
+        ->join("tb_user u on r.u_id=u.u_id","LEFT")
+        ->field("b.bi_id as id,b.bi_no as no,b.bi_model as model,b.bi_putTime as time,b.bi_NumOfUse as num,
+            b.bi_journey as journey,bs.bs_name as name,r.re_begin as begin,r.re_end as end,u.u_account as account,b.bi_useState as state,b.bi_scrap as scrap")
+        ->page($pageNo,$pageSize)->where($query)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"suser"=>$suser,"sno"=>$sno,"smodel"=>$smodel,"sstate"=>$sstate);
+        //
+        $this->assign("page",$page);
+        $this->display("bicycleList");
+    }
 }
 
 ?>

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>欢迎界面</title>
-		<link type="text/css" rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/easyui/themes/metro/easyui.css">
+		<link type="text/css" rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/easyui/themes/bootstrap/easyui.css">
 		<link type="text/css" rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/easyui/themes/icon.css">
 		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/easyui/jquery.easyui.min.js"></script>

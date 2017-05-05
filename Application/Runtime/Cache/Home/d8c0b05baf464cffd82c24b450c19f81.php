@@ -121,10 +121,10 @@
     		  <!-- 条件搜索 -->
 	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" metch="post">
 	   		  	<div class="input-group">
-	   		  		<input type="text" class="form-control" placeholder="用户帐号">
-			      	<input type="text" class="form-control" placeholder="单车编号">
-			      	<input type="text" class="form-control" placeholder="单车型号">
-			      	<input type="text" class="form-control" placeholder="单车状态">
+	   		  		<input type="text" class="form-control" id="suser" name="suser" value="<?php echo ($page["suser"]); ?>" placeholder="用户帐号">
+			      	<input type="text" class="form-control" id="sno" name="sno" value="<?php echo ($page["sno"]); ?>" placeholder="单车编号">
+			      	<input type="text" class="form-control" id="smodel" name="smodel" value="<?php echo ($page["smodel"]); ?>" placeholder="单车型号">
+			      	<input type="text" class="form-control" id="sstate" name="sstate" value="<?php echo ($page["sstate"]); ?>" placeholder="单车状态">
 			      	<span class="input-group-btn">
 			        	<button class="btn btn-default" type="submit">搜索</button>
 			      	</span>
