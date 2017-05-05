@@ -8,11 +8,45 @@ session_start();
 		<link rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css">		
 		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.11.0.min.js"></script>		
 		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>		
+		<style type="text/css">
+            .glyphicon{
+	           color: green;            }
+            #searchForm input{
+	              width: 33.3%;
+            }
+
+        </style>
 	</head>
 	<body>
 	
-		<div class="table-responsive">
-			
+		<div class="table-responsive"> 
+			<div id="topbtn" class="btn-group">
+				<button type="button" class="btn btn-default" >刷新
+                  	<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                </button>
+    			<button type="button" class="btn btn-default" >增加
+                  	<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" >修改
+                  	<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" >导出excel
+                  	<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-default" >删除
+                  	<span class="glyphicon glyphicon-trash" aria-hidden="true" style="color: red;"></span>
+                </button>
+                <form id="searchForm" action="#" method="post">
+                    <div class="input-group">
+    	   		  		<input type="text" class="form-control" placeholder="ID">
+    			      	<input type="text" class="form-control" placeholder="单车编号">
+    			      	<input type="text" class="form-control" placeholder="单车型号">
+    			      	<span class="input-group-btn">
+    			        	<button class="btn btn-default" type="submit">搜索</button>
+    			      	</span>
+        			 </div>
+    			</form>
+            </div>
             <table class="table">
             	<tr>
             		<th><input type="checkbox"></th>
