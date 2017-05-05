@@ -25,3 +25,39 @@
 [05-May-2017 09:24:15 Asia/Shanghai] PHP Notice:  Undefined index: totalPage in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 48
 [05-May-2017 09:24:15 Asia/Shanghai] PHP Stack trace:
 [05-May-2017 09:24:15 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Notice:  Undefined index: rows in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:18 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Warning:  Invalid argument supplied for foreach() in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:18 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Notice:  Undefined index: totalPage in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 50
+[05-May-2017 10:22:18 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:18 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Notice:  Undefined index: rows in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:20 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Warning:  Invalid argument supplied for foreach() in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:20 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Notice:  Undefined index: totalPage in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 50
+[05-May-2017 10:22:20 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:22:20 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Notice:  Undefined index: rows in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:41 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Warning:  Invalid argument supplied for foreach() in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:41 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Notice:  Undefined index: totalPage in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 50
+[05-May-2017 10:25:41 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:41 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Notice:  Undefined index: rows in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:43 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Warning:  Invalid argument supplied for foreach() in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 27
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:43 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Notice:  Undefined index: totalPage in D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php on line 50
+[05-May-2017 10:25:43 Asia/Shanghai] PHP Stack trace:
+[05-May-2017 10:25:43 Asia/Shanghai] PHP   1. {main}() D:\PHP-webapp\freeBicycle\Application\Home\View\LMZ\unusual_bicycleView.php:0

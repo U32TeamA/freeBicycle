@@ -120,17 +120,17 @@
     		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
     		  <!-- 条件搜索 -->
 	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" metch="post">
-	   		  	<div class="input-group">
-	   		  		<input type="text" class="form-control" id="suser" name="suser" value="<?php echo ($page["suser"]); ?>" placeholder="用户帐号">
-			      	<input type="text" class="form-control" id="sno" name="sno" value="<?php echo ($page["sno"]); ?>" placeholder="单车编号">
-			      	<input type="text" class="form-control" id="smodel" name="smodel" value="<?php echo ($page["smodel"]); ?>" placeholder="单车型号">
-			      	<input type="text" class="form-control" id="sstate" name="sstate" value="<?php echo ($page["sstate"]); ?>" placeholder="单车状态">
-			      	<span class="input-group-btn">
-			        	<button class="btn btn-default" type="submit">搜索</button>
-			      	</span>
+	   		  		<div class="input-group">
+		   		  		<input type="text" class="form-control" id="suser" name="suser" value="<?php echo ($page["suser"]); ?>" placeholder="用户帐号">
+				      	<input type="text" class="form-control" id="sno" name="sno" value="<?php echo ($page["sno"]); ?>" placeholder="单车编号">
+				      	<input type="text" class="form-control" id="smodel" name="smodel" value="<?php echo ($page["smodel"]); ?>" placeholder="单车型号">
+				      	<input type="text" class="form-control" id="sstate" name="sstate" value="<?php echo ($page["sstate"]); ?>" placeholder="单车状态">
+				      	<span class="input-group-btn">
+				        	<button class="btn btn-default" type="submit">搜索</button>
+				      	</span>
 			    	</div>
-			  	</div>
 	   		  </form>
+	   		</div>
 			<table class="table table-striped table-bordered table-condensed text-center table-hover" style="width:98%;margin:10px 10px 0 10px;">
 				<tr>
 					<th><input type="checkbox" name="nums"/></th><th>单车编号</th><th>单车型号</th><th>用户帐号</th><th>正在使用</th>
