@@ -10,7 +10,9 @@ session_start();
 		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>		
 	</head>
 	<body>
+	
 		<div class="table-responsive">
+			
             <table class="table">
             	<tr>
             		<th><input type="checkbox"></th>

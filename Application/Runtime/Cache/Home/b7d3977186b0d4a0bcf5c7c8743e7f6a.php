@@ -8,6 +8,9 @@
 		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js"></script>
 		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/easyui/jquery.easyui.min.js"></script>
 		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/easyui/locale/easyui-lang-zh_CN.js"></script>
+		<style type="text/css">
+			ul,li{list-style:none;}
+		</style>
 		<script type="text/javascript">
 		function addTabs(title, url){
 			var b = $("#tabs").tabs("exists", title);
@@ -74,7 +77,7 @@
         	<a href="http://localhost:8080/freeBicycle/Application/Home/View/XJ/LoginView.php">退出</a>
         </div>   
         <div data-options="region:'west',title:'系统菜单',split:true" style="width:200px;">
-        	<ul class="easyui-tree"> 
+        	<ul class="easyui-tree" animate='true' lines='true'> 
         		<!-- 循环遍历数据 -->
         		<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m1): $mod = ($i % 2 );++$i; if($m1["me_leavel"] == 1): ?><li>
         					<span><?php echo ($m1["me_name"]); ?></span>
@@ -85,7 +88,7 @@
         									<ul>
         										<?php $mid2 = $m2["me_id"]; ?>
         										<?php if(is_array($_SESSION['menus'])): $i = 0; $__LIST__ = $_SESSION['menus'];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$m3): $mod = ($i % 2 );++$i; if($m3["me_leavel"] == 3 AND $m3["me_parentid"] == $mid2): ?><li>
-        													<a href="javascript:addTabs('<?php echo ($m3["me_name"]); ?>','<?php echo ($m3["me_url"]); ?>')"><?php echo ($m3["me_name"]); ?></a>
+        													<a onclick="javascript:addTabs('<?php echo ($m3["me_name"]); ?>','<?php echo ($m3["me_url"]); ?>')"><?php echo ($m3["me_name"]); ?></a>
         												</li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
         									</ul>
         								</li><?php endif; endforeach; endif; else: echo "" ;endif; ?>

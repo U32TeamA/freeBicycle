@@ -13,6 +13,7 @@ class BikeLMZController extends Controller
     }
     
     public function unusual_bicycleView($pageNo = 1 ,$pageNum=10){
+        
         $rows = $this->userModel->table("tb_bicycle bi,tb_bicycle_state bs")->where("bi.bs_id=bs.bs_id and bs.bs_name='异常'")
             ->field("bi.bi_id,bi.bi_journey,bi.bi_no,bi.bi_model,bi.bi_puttime,bs.bs_name")->select();
         //总页数
