@@ -119,7 +119,7 @@
     		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
     		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
     		  <!-- 条件搜索 -->
-	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" metch="post">
+	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" method="post">
 	   		  		<div class="input-group">
 		   		  		<input type="text" class="form-control" id="suser" name="suser" value="<?php echo ($page["suser"]); ?>" placeholder="用户帐号">
 				      	<input type="text" class="form-control" id="sno" name="sno" value="<?php echo ($page["sno"]); ?>" placeholder="单车编号">
