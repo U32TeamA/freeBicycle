@@ -31,12 +31,24 @@
 			}
 			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadUserRecharge/pageNo/"+pageNo;
 		}
+		//EXCEL导出
+		function downExcel(){
+			$.post("http://localhost:8080/freeBicycle/index.php/Home/ZJExcelDownLoad/excelDownLoad",
+			{
+				"table"        : "tb_recharge rec,tb_user u",
+				"where"         : "rec.u_id=u.u_id",
+				"field"		   : "rec.rec_id,u.u_account,rec.rec_money,rec.rec_time,rec.rec_balance",
+				"tableHeader"  : ['充值编号','用户帐号','充值金额(单位：元)','充值时间','累计金额(单位：元)']
+			},function(data){
+				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ZJExcelDownLoad&a=down&name=充值记录表.xls&load=Public/tmpFiles/new.xls" ;
+			});
+		}
 		</script>
 	</head>
 	<body>
 	<div class="container">
 		<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">
-   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;">
+   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;" onclick="downExcel()">
    		  		<span class="glyphicon glyphicon-file"></span>导出Excel
    		  	</button>
    		  	<!-- 条件搜索 -->

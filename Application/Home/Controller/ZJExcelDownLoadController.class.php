@@ -3,7 +3,7 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Think\Model;
-class ExcelDownLoadController extends Controller
+class ZJExcelDownLoadController extends Controller
 {
     private $user ;
     public function __construct(){
@@ -55,6 +55,9 @@ class ExcelDownLoadController extends Controller
         $objWriter->save($load);//保存临时文件
         echo $load;
     }
+    /**
+     * 下载EXCEL文件
+     */
     public function down(){
         $laod = $_REQUEST['load'];
         $name = $_REQUEST['name'];

@@ -84,9 +84,6 @@
    		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;" onclick="openWin();">
    		  		<span class="glyphicon glyphicon-gift"></span>添加奖品
    		  	</button>
-   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;">
-   		  		<span class="glyphicon glyphicon-file"></span>导出Excel
-   		  	</button>
    		  	<!-- 模态窗 -->
 			<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
 			    <div class="modal-dialog" role="document">

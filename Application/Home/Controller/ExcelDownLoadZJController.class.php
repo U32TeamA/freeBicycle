@@ -3,7 +3,7 @@ namespace Home\Controller;
 
 use Think\Controller;
 use Think\Model;
-class ExcelDownLoadController extends Controller
+class ExcelDownLoadZJController extends Controller
 {
     private $user ;
     public function __construct(){
@@ -14,11 +14,11 @@ class ExcelDownLoadController extends Controller
         require_once "Public/PHPExcel.php";
         require_once 'Public/PHPExcel/Writer/Excel2007.php';
         $table = $_REQUEST["table"];
-        $where = $_REQUEST["where"];
+        $join = $_REQUEST["join"];
         $field = $_REQUEST["field"];
         //echo __DIR__;
         $dbutil = new Model();
-        $data = $dbutil->table("$table")->where("$where")->field("$field")->select();
+        $data = $dbutil->table("$table")->join("$join")->field("$field")->select();
         $phpExcel = new \PHPExcel();//创建PHPExcel对象
         $tableHeader = $_REQUEST['tableHeader'];//设置表头
         $AZ = array();//设置
@@ -55,6 +55,9 @@ class ExcelDownLoadController extends Controller
         $objWriter->save($load);//保存临时文件
         echo $load;
     }
+    /**
+     * 下载EXCEL文件
+     */
     public function down(){
         $laod = $_REQUEST['load'];
         $name = $_REQUEST['name'];

@@ -186,7 +186,32 @@ class BicycleJourneyZJController extends Controller{
         $this->assign("page",$page);
         $this->display("ZJ/loadWinnersList");
     }
-    
+    /**
+     * 按用户帐号，奖品名称搜索奖品列表并分页
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $searchUser
+     * @param string $searchName
+     */
+    public function searchWinnersList($pageNo=1,$pageSize=10,$searchUser=null,$searchName=null){
+        //字符串作为查询条件
+        $query = "1=1 ";
+        if($searchUser != "" && $searchUser != null){
+            $query .= "and u_account like '%$searchUser%'";
+        }
+        if($searchName != "" && $searchName != null){
+            $query .= "and pr_name like '%$searchName%'";
+        }
+        //查询总数据
+        $total = $this->adminZJmodel->table("tb_win")->count();
+        //查询当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_win w")->join("tb_user u on u.u_id=w.u_id")->join("tb_prize pr on pr.pr_id=w.pr_id")
+        ->where($query)->field("w.wi_id,u.u_account,pr.pr_name,w.wi_time")->select();
+        $page = array("pageNo"=>$pageNo,"pageSize"=>$pageSize,"total"=>$total,"rows"=>$rows,"searchUser"=>$searchUser,"searchName"=>$searchName);
+        //返回列表页面
+        $this->assign("page",$page);
+        $this->display("ZJ/loadWinnersList");
+    }
 }
 
 ?>

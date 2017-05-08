@@ -31,12 +31,24 @@
 			}
 			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadUserConsume/pageNo/"+pageNo;
 		}
+		//EXCEL导出
+		function downExcel(){
+			$.post("http://localhost:8080/freeBicycle/index.php/Home/ZJExcelDownLoad/excelDownLoad",
+			{
+				"table"        : "userConsume uc,tb_user u",
+				"where"         : "uc.u_id=u.u_id",
+				"field"		   : "u.u_account,uc.consumeMoney,uc.consumeTime,uc.totalMoney",
+				"tableHeader"  : ['用户帐号','一次消费金额(单位：元)','消费次数','累计消费金额(单位：元)']
+			},function(data){
+				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ZJExcelDownLoad&a=down&name=用户消费记录表.xls&load=Public/tmpFiles/new.xls" ;
+			});
+		}
 		</script>
 	</head>
 	<body>
 	<div class="container">
 		<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">
-   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;">
+   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;" onclick="downExcel()">
    		  		<span class="glyphicon glyphicon-file"></span>导出Excel
    		  	</button>
    		  	<!-- 条件搜索 -->

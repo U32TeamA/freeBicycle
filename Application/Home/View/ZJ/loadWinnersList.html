@@ -30,13 +30,25 @@
 				pageNo = type;
 			}
 			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadWinnersList/pageNo/"+pageNo;
-		}		
+		}	
+		//EXCEL导出
+		function downExcel(){
+			$.post("http://localhost:8080/freeBicycle/index.php/Home/ExcelDownLoadZJ/excelDownLoad",
+			{
+				"table"        : "tb_win w",
+				"join"         : "join tb_user u on u.u_id=w.u_id join tb_prize pr on pr.pr_id=w.pr_id",
+				"field"		   : "w.wi_id,u.u_account,pr.pr_name,w.wi_time",
+				"tableHeader"  : ['编号','用户帐号','奖品名称','中奖时间']
+			},function(data){
+				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ExcelDownLoadZJ&a=down&name=中奖信息表.xls&load=Public/tmpFiles/new.xls" ;
+			});
+		}
 		</script>
 	</head>
 	<body>
 	<div class="container">
 		<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">   		  	
-   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;">
+   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;" onclick="downExcel()">
    		  		<span class="glyphicon glyphicon-file"></span>导出Excel
    		  	</button>
    		  	<!-- 条件搜索 -->

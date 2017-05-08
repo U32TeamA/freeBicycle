@@ -22,7 +22,8 @@ session_start();
 					"where":"bi.bs_id=bs.bs_id and bs.bs_name='异常'",
 					"field":"bi.bi_id,bi.bi_journey,bi.bi_no,bi.bi_model,bi.bi_puttime,bs.bs_name",
 					"tableHeader" : ["ID","行程(公里)","编号","型号","上线时间","状态"]
-				},function(data){				
+				},function(data){	
+					//alert(data)			
 					location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ExcelDownLoad&a=down&name=异常单车表.xls&load=Public/tmpFiles/new.xls" ;
 				});
 			}
