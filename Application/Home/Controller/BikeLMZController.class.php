@@ -24,7 +24,7 @@ class BikeLMZController extends Controller
         $_SESSION['totalPage']=$totalPage;
         $_SESSION['rows']=$rows;
         //重定向
-        header("Location:http://localhost:8080/freeBicycle/Application/Home/View/LMZ/unusual_bicycleView.php");
+       header("Location:http://localhost:8080/freeBicycle/Application/Home/View/LMZ/unusual_bicycleView.php");
     }
 }
 
