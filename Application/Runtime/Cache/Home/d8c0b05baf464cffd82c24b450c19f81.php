@@ -96,6 +96,7 @@
 					return false;
 			}
 		}
+		//
 		$(function(){
 			$("#puttime").datetimepicker({
 				   format:'yyyy-mm-dd',

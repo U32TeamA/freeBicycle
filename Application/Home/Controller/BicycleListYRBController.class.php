@@ -109,6 +109,87 @@ class BicycleListYRBController extends Controller{
         $this->assign("page",$page);
         $this->display("bicycleList");
     }
+    /**
+     * 活动一览，查询所有活动
+     */
+    public function activity($sname='',$surl='',$stime='',$stername='',$pageNo=1,$pageSize=10){
+        //查询数组
+        $query = array();
+        if ($sname != '' && $sname != null){
+            $query['ac.ac_name']=array("LIKE","%$sname%");
+        }
+        if ($surl != '' && $surl != null){
+            $query['ac.ac_url']=array("LIKE","%$surl%");
+        }
+        if ($stime != '' && $stime != null){
+            $query['ac.ac_time']=array("LIKE","%$stime%");
+        }
+        if ($stername != '' && $stername != null){
+            $query['te.ter_id']=array("LIKE","%$stername%");
+        }
+        $total = $this->BicycleListYRBModel->table("tb_activity")->count();
+        $rows = $this->BicycleListYRBModel->table("tb_activity ac")->where($query)->join("tb_terrace te on te.ter_id=ac.ter_id","LEFT")->page($pageNo,$pageSize)
+        ->field("ac.*,te.ter_name as tname")->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"sname"=>$sname,"surl"=>$surl,"stime"=>$stime,"stername"=>$stername);
+        $this->assign("page",$page);
+        $this->display(activity);
+    }
+    /**
+     * 平台列表查询
+     */
+    public function activityTerrace(){
+        $rows = $this->BicycleListYRBModel->table("tb_terrace")->select();
+        $this->ajaxReturn($rows);
+    }
+    /**
+     * 根据id查询活动，用于回填
+     * @param unknown $acid
+     */
+    public function activitySearch($acid){
+        $rows = $this->BicycleListYRBModel->table("tb_activity")->where("ac_id = '$acid'")->select();
+        $this->ajaxReturn($rows);
+    }
+    /**
+     * 增加或修改活动列表
+     * @param unknown $ctr
+     * @param unknown $ac_id
+     * @param unknown $acname
+     * @param unknown $acurl
+     * @param unknown $issuetime
+     * @param unknown $tername
+     */
+    public function activityListEdit($ctr,$ac_id,$acname,$acurl,$issuetime,$tername){
+        if($ctr>0){
+            $data = array(
+                'ac_name'=>$acname,
+                'ac_url'=>$acurl,
+                'ac_time'=>$issuetime,
+                'ter_id'=>$tername
+            );
+            //print_r($data);
+            $this->BicycleListYRBModel->table("tb_activity")->field("ac_name,ac_url,ac_time,ter_id")->add($data);
+
+            $this->activity();
+        }else {
+            $data = array(
+                "ac_name"=>$acname,
+                "ac_url"=>$acurl,
+                "ac_time"=>$issuetime,
+                "ter_id"=>$tername
+            );
+            $this->BicycleListYRBModel->table("tb_activity")->field("ac_name,ac_url,ac_time,ter_id")->where("ac_id = '$ac_id'")->save($data);
+            //print $ac_id;
+            $this->activity();
+        }
+    }
+    /**
+     * 删除活动
+     * @param unknown $acid
+     */
+    public function activityListHide($acid){
+        $rows = $this->BicycleListYRBModel->table("tb_activity")->where("ac_id = '$acid'")->delete();
+        $this->activity();
+    }
 }
 
 ?>
