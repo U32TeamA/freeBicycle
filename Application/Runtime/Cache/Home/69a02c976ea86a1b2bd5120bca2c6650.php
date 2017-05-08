@@ -96,7 +96,7 @@
 				        <h4 class="modal-title">新增奖品</h4>
 				      </div>
 				      <div class="modal-body">
-				      	  <form id="ff" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/addPrizeInfo" method="post" enctype="multipart/form-data">
+				      	  <form id="ff" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/addPrizeInfo" method="post">
 							<div class="form-group">
 								<label>奖品名称：</label>
 								<input type="text" class="form-control" id="prizeName" name="prizeName" placeholder="输入奖品名称" onblur="onb(this, /[\u4E00-\u9FA5\uF900-\uFA2D]/)">
@@ -134,6 +134,7 @@
 		    	<a href="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadPrizeList" class="btn btn-default" type="reset">重置</a>
    		  	</form>
    		</div>
+   		<!-- 列表展示 -->
 		<table class="table table-striped table-bordered table-condensed" style="width:98%;margin:10px 10px 0 10px;">
 			<tr>
 				<th>奖品编号</th>
@@ -150,7 +151,7 @@
 					<td><?php echo ($rows["pr_cost"]); ?></td>
 				</tr><?php endforeach; endif; ?>
 		</table>
-		<!-- 翻页按钮 -->
+		<!-- 翻页控件 -->
 		<nav aria-label="Page navigation" class="text-center">
 		    <ul class="pagination">
 		  		<li><a href="javascript:void(0);">第<?php echo ($page["pageNo"]); ?>页</a></li>
@@ -165,7 +166,7 @@
 			    <li><a href="javascript:turnPage(<?php echo ($page["pageNo"]); ?>,4);">4</a></li>
 			    <li><a href="javascript:turnPage(<?php echo ($page["pageNo"]); ?>,5);">5</a></li>
 			    <li>
-			        <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',0);" aria-label="Next">
+			        <a href="javascript:turnPage(<?php echo ($page["pageNo"]); ?>,0);" aria-label="Next">
 			        	<span aria-hidden="true">&raquo;</span>
 			        </a>
 			    </li>
