@@ -999,3 +999,186 @@
 [08-May-2017 13:38:19 PRC] PHP  11. Think\Db\Driver->execute($str = 'DELETE FROM `tb_bicycle` WHERE ( ac_id = \'9\' )', $fetchSql = FALSE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:933
 [08-May-2017 13:38:19 PRC] PHP  12. Think\Db\Driver->error() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:237
 [08-May-2017 13:38:19 PRC] PHP  13. E($msg = '1054:Unknown column \'ac_id\' in \'where clause\'\n [ SQL语句 ] : DELETE FROM `tb_bicycle` WHERE ( ac_id = \'9\' )', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:350
+[08-May-2017 13:43:27 PRC] PHP ReflectionException:  Method Home\Controller\BicycleJourneyZJController::searchWinnersList() does not exist in D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php on line 124
+[08-May-2017 13:43:27 PRC] PHP Stack trace:
+[08-May-2017 13:43:27 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 13:43:27 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 13:43:27 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 13:43:27 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 13:43:27 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 13:43:27 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\BicycleJourneyZJController { private $adminZJmodel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'searchWinnersList') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 13:43:27 PRC] PHP   7. ReflectionMethod->__construct(class Home\Controller\BicycleJourneyZJController { private $adminZJmodel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, 'searchWinnersList') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:124
+[08-May-2017 13:43:27 PRC] PHP Think\Exception:  非法操作:searchWinnersList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 13:43:27 PRC] PHP Stack trace:
+[08-May-2017 13:43:27 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 13:43:27 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 13:43:27 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 13:43:27 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 13:43:27 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 13:43:27 PRC] PHP   6. ReflectionMethod->invokeArgs(class Home\Controller\BicycleJourneyZJController { private $adminZJmodel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, array (0 => 'searchWinnersList', 1 => '')) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:114
+[08-May-2017 13:43:27 PRC] PHP   7. Think\Controller->__call($method = 'searchWinnersList', $args = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:114
+[08-May-2017 13:43:27 PRC] PHP   8. E($msg = '非法操作:searchWinnersList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Controller.class.php:170
+[08-May-2017 14:33:19 PRC] PHP Think\Exception:  参数错误或者未定义:ad_account in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 14:33:19 PRC] PHP Stack trace:
+[08-May-2017 14:33:19 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 14:33:19 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 14:33:19 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 14:33:19 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 14:33:19 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 14:33:19 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\XujieController { private $UserModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'ad_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_admin'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_admin'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'login') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 14:33:19 PRC] PHP   7. E($msg = '参数错误或者未定义:ad_account', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:157
+[08-May-2017 14:33:29 PRC] PHP Think\Exception:  参数错误或者未定义:ad_account in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 14:33:29 PRC] PHP Stack trace:
+[08-May-2017 14:33:29 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 14:33:29 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 14:33:29 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 14:33:29 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 14:33:29 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 14:33:29 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\XujieController { private $UserModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'ad_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_admin'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_admin'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'login') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 14:33:29 PRC] PHP   7. E($msg = '参数错误或者未定义:ad_account', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:157
+[08-May-2017 14:33:33 PRC] PHP Think\Exception:  参数错误或者未定义:ad_account in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 14:33:33 PRC] PHP Stack trace:
+[08-May-2017 14:33:33 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 14:33:33 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 14:33:33 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 14:33:33 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 14:33:33 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 14:33:33 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\XujieController { private $UserModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'ad_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_admin'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_admin'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'login') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 14:33:33 PRC] PHP   7. E($msg = '参数错误或者未定义:ad_account', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:157
+[08-May-2017 15:30:35 PRC] PHP PHPExcel_Writer_Exception:  Could not close zip file Public/tmpFiles/new.xls. in D:\PHP-webapp\freeBicycle\Public\PHPExcel\Writer\Excel2007.php on line 399
+[08-May-2017 15:30:35 PRC] PHP Stack trace:
+[08-May-2017 15:30:35 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 15:30:35 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 15:30:35 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 15:30:35 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 15:30:35 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 15:30:35 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\ExcelDownLoadController { private $user = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'id'; protected $autoinc = FALSE; protected $tablePrefix = ''; protected $name = FALSE; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = ''; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = NULL; protected $config = array () }, $action = 'excelDownLoad') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 15:30:35 PRC] PHP   7. ReflectionMethod->invoke(class Home\Controller\ExcelDownLoadController { private $user = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'id'; protected $autoinc = FALSE; protected $tablePrefix = ''; protected $name = FALSE; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = ''; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = NULL; protected $config = array () }) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:173
+[08-May-2017 15:30:35 PRC] PHP   8. Home\Controller\ExcelDownLoadController->excelDownLoad() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:173
+[08-May-2017 15:30:35 PRC] PHP   9. PHPExcel_Writer_Excel2007->save($pFilename = 'Public/tmpFiles/new.xls') D:\PHP-webapp\freeBicycle\Application\Home\Controller\ExcelDownLoadController.class.php:55
+[08-May-2017 15:49:40 PRC] PHP PDOException:  SQLSTATE[42S22]: Column not found: 1054 Unknown column 'te.ter_name' in 'where clause' in D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php on line 170
+[08-May-2017 15:49:40 PRC] PHP Stack trace:
+[08-May-2017 15:49:40 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 15:49:40 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 15:49:40 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 15:49:40 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 15:49:40 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 15:49:40 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'activity') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 15:49:40 PRC] PHP   7. ReflectionMethod->invokeArgs(class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, array (0 => '', 1 => '', 2 => '', 3 => '较场口单车租赁平台', 4 => 1, 5 => 10)) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:171
+[08-May-2017 15:49:40 PRC] PHP   8. Home\Controller\BicycleListYRBController->activity($sname = '', $surl = '', $stime = '', $stername = '较场口单车租赁平台', $pageNo = 1, $pageSize = 10) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:171
+[08-May-2017 15:49:40 PRC] PHP   9. Think\Model->count() D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php:130
+[08-May-2017 15:49:40 PRC] PHP  10. Think\Model->__call($method = 'count', $args = array ()) D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php:130
+[08-May-2017 15:49:40 PRC] PHP  11. Think\Model->getField($field = 'COUNT(*) AS tp_count', $sepa = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:227
+[08-May-2017 15:49:40 PRC] PHP  12. Think\Db\Driver->select($options = array ('table' => 'tb_activity', 'where' => array ('te.ter_name' => array (...)), 'field' => 'COUNT(*) AS tp_count', 'model' => 'tb_bicycle', 'limit' => 1)) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:970
+[08-May-2017 15:49:40 PRC] PHP  13. Think\Db\Driver->query($str = 'SELECT COUNT(*) AS tp_count FROM `tb_activity` WHERE te.ter_name LIKE \'%较场口单车租赁平台%\' LIMIT 1  ', $fetchSql = FALSE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:946
+[08-May-2017 15:49:40 PRC] PHP  14. PDOStatement->execute() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:170
+[08-May-2017 15:49:40 PRC] PHP Think\Exception:  1054:Unknown column 'te.ter_name' in 'where clause'
+ [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `tb_activity` WHERE te.ter_name LIKE '%较场口单车租赁平台%' LIMIT 1   in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 15:49:40 PRC] PHP Stack trace:
+[08-May-2017 15:49:40 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 15:49:40 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 15:49:40 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 15:49:40 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 15:49:40 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 15:49:40 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'activity') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 15:49:40 PRC] PHP   7. ReflectionMethod->invokeArgs(class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, array (0 => '', 1 => '', 2 => '', 3 => '较场口单车租赁平台', 4 => 1, 5 => 10)) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:171
+[08-May-2017 15:49:40 PRC] PHP   8. Home\Controller\BicycleListYRBController->activity($sname = '', $surl = '', $stime = '', $stername = '较场口单车租赁平台', $pageNo = 1, $pageSize = 10) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:171
+[08-May-2017 15:49:40 PRC] PHP   9. Think\Model->count() D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php:130
+[08-May-2017 15:49:40 PRC] PHP  10. Think\Model->__call($method = 'count', $args = array ()) D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php:130
+[08-May-2017 15:49:40 PRC] PHP  11. Think\Model->getField($field = 'COUNT(*) AS tp_count', $sepa = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:227
+[08-May-2017 15:49:40 PRC] PHP  12. Think\Db\Driver->select($options = array ('table' => 'tb_activity', 'where' => array ('te.ter_name' => array (...)), 'field' => 'COUNT(*) AS tp_count', 'model' => 'tb_bicycle', 'limit' => 1)) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:970
+[08-May-2017 15:49:40 PRC] PHP  13. Think\Db\Driver->query($str = 'SELECT COUNT(*) AS tp_count FROM `tb_activity` WHERE te.ter_name LIKE \'%较场口单车租赁平台%\' LIMIT 1  ', $fetchSql = FALSE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:946
+[08-May-2017 15:49:40 PRC] PHP  14. Think\Db\Driver->error() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:180
+[08-May-2017 15:49:40 PRC] PHP  15. E($msg = '1054:Unknown column \'te.ter_name\' in \'where clause\'\n [ SQL语句 ] : SELECT COUNT(*) AS tp_count FROM `tb_activity` WHERE te.ter_name LIKE \'%较场口单车租赁平台%\' LIMIT 1  ', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:350
+[08-May-2017 16:23:53 PRC] PHP Think\Exception:  无法加载控制器:WYX in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 16:23:53 PRC] PHP Stack trace:
+[08-May-2017 16:23:53 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 16:23:53 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 16:23:53 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 16:23:53 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 16:23:53 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 16:23:53 PRC] PHP   6. E($msg = '无法加载控制器:WYX', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:43:04 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:43:04 PRC] PHP Stack trace:
+[08-May-2017 17:43:04 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:43:04 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:43:04 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:43:04 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:43:04 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:43:04 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:43:12 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:43:12 PRC] PHP Stack trace:
+[08-May-2017 17:43:12 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:43:12 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:43:12 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:43:12 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:43:12 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:43:12 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:45:40 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:45:40 PRC] PHP Stack trace:
+[08-May-2017 17:45:40 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:45:40 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:45:40 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:45:40 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:45:40 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:45:40 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:46:07 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:46:07 PRC] PHP Stack trace:
+[08-May-2017 17:46:07 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:46:07 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:46:07 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:46:07 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:46:07 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:46:07 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:48:53 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:48:53 PRC] PHP Stack trace:
+[08-May-2017 17:48:53 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:48:53 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:48:53 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:48:53 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:48:53 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:48:53 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:55:00 PRC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in D:\PHP-webapp\freeBicycle\Application\Home\Controller\ExcelOutBicycleListController.class.php on line 55
+[08-May-2017 17:55:00 PRC] PHP Stack trace:
+[08-May-2017 17:55:00 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:55:01 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:55:01 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:55:01 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:55:01 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:55:01 PRC] PHP   6. controller($name = 'ExcelOutBicycleList', $path = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:89
+[08-May-2017 17:55:01 PRC] PHP   7. class_exists('Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:55:01 PRC] PHP   8. spl_autoload_call('Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:55:01 PRC] PHP   9. Think\Think::autoload($class = 'Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:55:01 PRC] PHP Parse error:  syntax error, unexpected 'public' (T_PUBLIC) in D:\PHP-webapp\freeBicycle\Application\Home\Controller\ExcelOutBicycleListController.class.php on line 55
+[08-May-2017 17:55:01 PRC] PHP Stack trace:
+[08-May-2017 17:55:01 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:55:01 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:55:01 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:55:01 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:55:01 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:55:01 PRC] PHP   6. controller($name = 'ExcelOutBicycleList', $path = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:89
+[08-May-2017 17:55:01 PRC] PHP   7. class_exists('Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:55:01 PRC] PHP   8. spl_autoload_call('Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:55:01 PRC] PHP   9. Think\Think::autoload($class = 'Home\\Controller\\ExcelOutBicycleListController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[08-May-2017 17:58:13 PRC] PHP Think\Exception:  无法加载控制器:ExcelOutBicycleList in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[08-May-2017 17:58:13 PRC] PHP Stack trace:
+[08-May-2017 17:58:13 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:58:13 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:58:13 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:58:13 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:58:13 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:58:13 PRC] PHP   6. E($msg = '无法加载控制器:ExcelOutBicycleList', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:101
+[08-May-2017 17:59:48 PRC] PHP PHPExcel_Exception:  Invalid cell coordinate 2 in D:\PHP-webapp\freeBicycle\Public\PHPExcel\Cell.php on line 558
+[08-May-2017 17:59:48 PRC] PHP Stack trace:
+[08-May-2017 17:59:48 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[08-May-2017 17:59:48 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[08-May-2017 17:59:48 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[08-May-2017 17:59:48 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[08-May-2017 17:59:48 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[08-May-2017 17:59:48 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\ExcelOutBicycleListController { private $outPutModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'id'; protected $autoinc = FALSE; protected $tablePrefix = ''; protected $name = FALSE; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = ''; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = NULL; protected $config = array () }, $action = 'ExcelOutBicycleList') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[08-May-2017 17:59:48 PRC] PHP   7. ReflectionMethod->invoke(class Home\Controller\ExcelOutBicycleListController { private $outPutModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'id'; protected $autoinc = FALSE; protected $tablePrefix = ''; protected $name = FALSE; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = ''; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = NULL; protected $config = array () }) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:173
+[08-May-2017 17:59:48 PRC] PHP   8. Home\Controller\ExcelOutBicycleListController->ExcelOutBicycleList() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:173
+[08-May-2017 17:59:48 PRC] PHP   9. PHPExcel_Worksheet->setCellValue($pCoordinate = '2', $pValue = '0', $returnCell = *uninitialized*) D:\PHP-webapp\freeBicycle\Application\Home\Controller\ExcelOutBicycleListController.class.php:43
+[08-May-2017 17:59:48 PRC] PHP  10. PHPExcel_Worksheet->getCell($pCoordinate = '2') D:\PHP-webapp\freeBicycle\Public\PHPExcel\Worksheet.php:1095
+[08-May-2017 17:59:48 PRC] PHP  11. PHPExcel_Worksheet->_createNewCell($pCoordinate = '2') D:\PHP-webapp\freeBicycle\Public\PHPExcel\Worksheet.php:1186
+[08-May-2017 17:59:48 PRC] PHP  12. PHPExcel_Cell::coordinateFromString($pCoordinateString = '2') D:\PHP-webapp\freeBicycle\Public\PHPExcel\Worksheet.php:1227

@@ -116,18 +116,18 @@ class BicycleListYRBController extends Controller{
         //查询数组
         $query = array();
         if ($sname != '' && $sname != null){
-            $query['ac.ac_name']=array("LIKE","%$sname%");
+            $query['ac_name']=array("LIKE","%$sname%");
         }
         if ($surl != '' && $surl != null){
-            $query['ac.ac_url']=array("LIKE","%$surl%");
+            $query['ac_url']=array("LIKE","%$surl%");
         }
         if ($stime != '' && $stime != null){
-            $query['ac.ac_time']=array("LIKE","%$stime%");
+            $query['ac_time']=array("LIKE","%$stime%");
         }
-        if ($stername != '' && $stername != null){
-            $query['te.ter_id']=array("LIKE","%$stername%");
+        if ($stername != '0' && $stername != null){
+            $query['ter_name']=array("LIKE","%$stername%");
         }
-        $total = $this->BicycleListYRBModel->table("tb_activity")->count();
+        $total = $this->BicycleListYRBModel->table("tb_activity ac")->join("tb_terrace te on te.ter_id=ac.ter_id","LEFT")->where($query)->count();
         $rows = $this->BicycleListYRBModel->table("tb_activity ac")->where($query)->join("tb_terrace te on te.ter_id=ac.ter_id","LEFT")->page($pageNo,$pageSize)
         ->field("ac.*,te.ter_name as tname")->select();
         $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"sname"=>$sname,"surl"=>$surl,"stime"=>$stime,"stername"=>$stername);

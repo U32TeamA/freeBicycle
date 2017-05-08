@@ -37,6 +37,16 @@
 				}else{
 					pageNo = type;
 				}
+				if( <?php echo ($page["total"]); ?> < 10 ){
+					return;
+				}
+				//var query = '';
+				//if(<?php echo ($page["sname"]); ?>){
+				//	query += (sname/<?php echo ($page["sname"]); ?>);
+				//}
+				//if(<?php echo ($page["surl"]); ?>){
+				//	query += (surl/<?php echo ($page["surl"]); ?>);
+				//}
 				location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activity/pageNo/"+pageNo;
 			}
 			//验证
@@ -57,11 +67,11 @@
 			}
 			$(function(){
 				//平台列表
-				$("#stername option[value != '']").remove();
+				$("#stername option[value != 0]").remove();
 				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityTerrace"	
 				,function(data){
-					for(var i=1;i<data.length;i++){
-						$("#stername").append("<option value='"+data[i]['ter_id']+"'>"+data[i]['ter_name']+"</option>");
+					for(var i=0;i<data.length;i++){
+						$("#stername").append("<option value='"+data[i]['ter_name']+"'>"+data[i]['ter_name']+"</option>");
 					}
 				},"json");
 			});
@@ -71,7 +81,7 @@
 				$("#tername option[value != -1]").remove();
 				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityTerrace"	
 				,function(data){
-					for(var i=1;i<data.length;i++){
+					for(var i=0;i<data.length;i++){
 						$("#tername").append("<option value='"+data[i]['ter_id']+"'>"+data[i]['ter_name']+"</option>");
 					}
 				},"json");
@@ -118,7 +128,7 @@
 	 		}
 			//跳到中奖表
 			function turnwin(){
-				alert('中奖！');
+				location.href="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadWinnersList";
 			}
 			//time
 			$(function(){
@@ -133,6 +143,13 @@
 					        showMeridian: 1
 					    });
 			});
+			
+			//重置按钮事件 
+			function clearBtn(){
+				$("#sname").val(""); 
+				$("#surl").val("");
+				$("#stime").val("");
+			}
 			
 			//复制
 			
@@ -164,7 +181,7 @@
     		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
     		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
     		  <button type="button" class="btn btn-default" onclick="turnwin();"><span class="glyphicon glyphicon-user"></span>中奖名单</button>
-    		  <button type="button" class="btn btn-default" id="copyurlbtn" oncilck="copyurl()"><span class="glyphicon glyphicon-copy"></span>复制选中的链接</button>
+    		  <button type="button" class="btn btn-default" id="copyurlbtn" onclick="copyurl()"><span class="glyphicon glyphicon-copy"></span>复制选中的链接</button>
     		  <!-- 条件搜索 -->
 	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activity" method="post">
 	   		  		<div class="input-group">
@@ -172,10 +189,11 @@
 				      	<input type="text" class="form-control" id="surl" name="surl" value="<?php echo ($page["surl"]); ?>" placeholder="地址关键字">
 				      	<input type="text" class="form-control" id="stime" name="stime" value="<?php echo ($page["stime"]); ?>" placeholder="发布时间">
 				      	<select id="stername" name="stername" class="form-control">
-							<option value="">请选择活动平台</option>
+							<option value="0">请选择活动平台</option>
 						</select>
 				      	<span class="input-group-btn">
 				        	<button class="btn btn-default" type="submit">搜索</button>
+				        	<button class="btn btn-default" id="resetBtn" onclick="clearBtn();">清除</button>
 				      	</span>
 			    	</div>
 	   		  </form>
@@ -221,7 +239,7 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title">增加/修改</h4>
+		        <h4 class="modal-title">增加/修改活动</h4>
 		      </div>
 		      <div class="modal-body">
 		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityListEdit" method="post" class="text-center">
@@ -257,7 +275,7 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-			        <button type="button" class="btn btn-default">取消</button>
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 			        <input type="submit" class="btn btn-primary" value="确认">
 			      </div>
 		        </form>
