@@ -110,6 +110,24 @@
 				        showMeridian: 1
 				    });
 		});
+		//重置按钮事件 
+		function clearBtn(){
+			$("#suser").val(""); 
+			$("#sno").val("");
+			$("#smodel").val("");
+			$("#sstate").val("");
+		}
+		//导出EXCEL
+		function outPut(){
+			$.post("http://localhost:8080/freeBicycle/index.php/Home/ExcelOutBicycleList/ExcelOutBicycleList",{
+				//"table":"tb_bicycle bi,tb_bicycle_state bs,tb_user us,tb_rent re",
+				//"where":"bi.bs_id=bs.bs_id and re.u_id=us.u_id and bi.re_id=re.re_id",
+				//"field":"bi.bi_id,bi.bi_journey,bi.bi_no,bi.bi_model,bi.bi_puttime,bs.bs_name",
+				"tableHeader" : ["ID","单车编号","单车型号","用户帐号","是否正在使用","投放时间","使用次数","行程","状态","租赁开始时间","租赁结束时间","是否报废"]
+			},function(data){				
+				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ExcelOutBicycleList&a=down&name=单车一览表.xls&load=Public/tmpFiles/new.xls" ;
+			});
+		}
 		</script>
 	</head>
 	<body>
@@ -119,7 +137,7 @@
     		  <button type="button" class="btn btn-default" onclick="addedit(1);"><span class="glyphicon glyphicon-plus"></span>新增</button>
     		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
     		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
-    		  <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
+    		  <button type="button" class="btn btn-default" onclick="outPut();"><span class="glyphicon glyphicon-file"></span>导出Excel</button>
     		  <!-- 条件搜索 -->
 	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/BicycleListSearch" method="post">
 	   		  		<div class="input-group">
@@ -129,6 +147,7 @@
 				      	<input type="text" class="form-control" id="sstate" name="sstate" value="{$page.sstate}" placeholder="单车状态">
 				      	<span class="input-group-btn">
 				        	<button class="btn btn-default" type="submit">搜索</button>
+				        	<button class="btn btn-default" id="resetBtn" onclick="clearBtn();">清除</button>
 				      	</span>
 			    	</div>
 	   		  </form>
