@@ -116,8 +116,23 @@ class BicycleJourneyZJController extends Controller{
         $this->assign("page",$page);
         $this->display("ZJ/loadUserConsumeList");
     }
-    
-    
+    /**
+     * 同步加载奖品列表
+     * @param int $pageNo
+     * @param int $pageSize
+     */
+    public function loadPrizeList($pageNo=1,$pageSize=10){
+        //查询总数量
+        $total = $this->adminZJmodel->table("tb_prize")->count();
+        //当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_prize pr")
+        ->field("pr.pr_id,pr.pr_name,pr.pr_picture,pr.pr_integral,pr.pr_cost")
+        ->page($pageNo,$pageSize)->select();
+        //数组
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize);
+        $this->assign("page",$page);
+        $this->display("ZJ/loadPrizeList");
+    }
     
 }
 
