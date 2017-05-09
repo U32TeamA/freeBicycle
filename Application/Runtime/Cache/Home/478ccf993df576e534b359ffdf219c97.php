@@ -88,6 +88,9 @@
 				//
 				if(type == 1){
 					$("#ctr").val("1");
+					$("#acname").val("");
+					$("#acurl").val("");
+					$("#issuetime").val("");
 					$("#addandedit").modal("toggle");
 				}else{
 					var num = $("input[name=num]:checked");
