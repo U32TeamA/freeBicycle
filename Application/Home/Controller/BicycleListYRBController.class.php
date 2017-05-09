@@ -2,6 +2,7 @@
 namespace Home\Controller;
 
 use Think\Controller;
+use Think\Upload;
 class BicycleListYRBController extends Controller{
     private $BicycleListYRBModel;
     public function __construct(){
@@ -181,6 +182,23 @@ class BicycleListYRBController extends Controller{
             //print $ac_id;
             $this->activity();
         }
+        //保存图片
+        $config = array(
+            "maxSize"=>0,
+            "rootPath"=>"./Public/",
+            "savePath"=>"",
+            "autoSub"=>true,
+            "subName"=>"upload",
+            "saveName"=>round(1,10000)."".time(),
+            "exts"=>array("jpg","png","gif")//"jpg,png,gif"
+        );
+        $up = new Upload($config);
+        $info = $up->uploadOne($_FILES['picture']);
+        if (!$info){
+            echo $up->getError();
+        }else {
+            //print_r($info);
+        }
     }
     /**
      * 删除活动
@@ -189,6 +207,80 @@ class BicycleListYRBController extends Controller{
     public function activityListHide($acid){
         $rows = $this->BicycleListYRBModel->table("tb_activity")->where("ac_id = '$acid'")->delete();
         $this->activity();
+    }
+    /**
+     * 公告一览，查询所有活动
+     */
+    public function announcement($sname='',$surl='',$stime='',$stername='',$pageNo=1,$pageSize=10){
+        //查询数组
+        $query = array();
+        if ($sname != '' && $sname != null){
+            $query['an_name']=array("LIKE","%$sname%");
+        }
+        if ($surl != '' && $surl != null){
+            $query['an_url']=array("LIKE","%$surl%");
+        }
+        if ($stime != '' && $stime != null){
+            $query['an_time']=array("LIKE","%$stime%");
+        }
+        if ($stername != '0' && $stername != null){
+            $query['ter_name']=array("LIKE","%$stername%");
+        }
+        $total = $this->BicycleListYRBModel->table("tb_announcement an")->join("tb_terrace te on te.ter_id=an.ter_id","LEFT")->where($query)->count();
+        $rows = $this->BicycleListYRBModel->table("tb_announcement an")->where($query)->join("tb_terrace te on te.ter_id=an.ter_id","LEFT")->page($pageNo,$pageSize)
+        ->field("an.*,te.ter_name as tname")->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"sname"=>$sname,"surl"=>$surl,"stime"=>$stime,"stername"=>$stername);
+        $this->assign("page",$page);
+        $this->display(announcement);
+    }
+    /**
+     * 根据id查询公告，用于回填
+     * @param unknown $acid
+     */
+    public function announcementSearch($anid){
+        $rows = $this->BicycleListYRBModel->table("tb_announcement")->where("an_id = '$anid'")->select();
+        $this->ajaxReturn($rows);
+    }
+    /**
+     * 删除公告
+     * @param unknown $acid
+     */
+    public function announcementHide($anid){
+        $rows = $this->BicycleListYRBModel->table("tb_announcement")->where("an_id = '$anid'")->delete();
+        $this->announcement();
+    }
+    /**
+     * 增加或修改活动列表
+     * @param unknown $ctr
+     * @param unknown $ac_id
+     * @param unknown $acname
+     * @param unknown $acurl
+     * @param unknown $issuetime
+     * @param unknown $tername
+     */
+    public function announcementListEdit($ctr,$ac_id,$acname,$acurl,$issuetime,$tername){
+        if($ctr>0){
+            $data = array(
+                'an_name'=>$acname,
+                'an_url'=>$acurl,
+                'an_time'=>$issuetime,
+                'ter_id'=>$tername
+            );
+            //print_r($data);
+            $this->BicycleListYRBModel->table("tb_announcement")->field("an_name,an_url,an_time,ter_id")->add($data);
+    
+            $this->announcement();
+        }else {
+            $data = array(
+                "an_name"=>$acname,
+                "an_url"=>$acurl,
+                "an_time"=>$issuetime,
+                "ter_id"=>$tername
+            );
+            $this->BicycleListYRBModel->table("tb_announcement")->field("ac_name,an_url,an_time,ter_id")->where("an_id = '$ac_id'")->save($data);
+            //print $ac_id;
+            $this->announcement();
+        }
     }
 }
 
