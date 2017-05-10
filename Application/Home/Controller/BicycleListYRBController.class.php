@@ -282,6 +282,80 @@ class BicycleListYRBController extends Controller{
             $this->announcement();
         }
     }
+    /**
+     * 优惠券一览，查询所有优惠券
+     */
+    public function coupon($sname='',$spri='',$stime='',$stername='',$pageNo=1,$pageSize=10){
+        //查询数组
+        $query = array();
+        if ($sname != '' && $sname != null){
+            $query['cou_name']=array("LIKE","%$sname%");
+        }
+        if ($spri != '' && $spri != null){
+            $query['cou_price']=array("LIKE","%$spri%");
+        }
+        if ($stime != '' && $stime != null){
+            $query['cou_end']=array("LIKE","%$stime%");
+        }
+        if ($stername != '0' && $stername != null){
+            $query['ter_name']=array("LIKE","%$stername%");
+        }
+        $total = $this->BicycleListYRBModel->table("tb_coupon cou")->join("tb_terrace te on te.ter_id=cou.ter_id","LEFT")->where($query)->count();
+        $rows = $this->BicycleListYRBModel->table("tb_coupon cou")->where($query)->join("tb_terrace te on te.ter_id=cou.ter_id","LEFT")->page($pageNo,$pageSize)
+        ->field("cou.*,te.ter_name as tname")->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"sname"=>$sname,"spri"=>$spri,"stime"=>$stime,"stername"=>$stername);
+        $this->assign("page",$page);
+        $this->display(coupon);
+    }
+    /**
+     * 根据id查询优惠券，用于回填
+     * @param unknown $couid
+     */
+    public function couponSearch($couid){
+        $rows = $this->BicycleListYRBModel->table("tb_coupon")->where("cou_id = '$couid'")->select();
+        $this->ajaxReturn($rows);
+    }
+    /**
+     * 删除公告
+     * @param unknown $couid
+     */
+    public function conponHide($couid){
+        $rows = $this->BicycleListYRBModel->table("tb_coupon")->where("cou_id = '$couid'")->delete();
+        $this->coupon();
+    }
+    /**
+     * 增加，修改优惠券信息
+     * @param unknown $ctr
+     * @param unknown $ac_id
+     * @param unknown $acname
+     * @param unknown $acurl
+     * @param unknown $issuetime
+     * @param unknown $tername
+     */
+    public function couponListEdit($ctr,$cou_id,$couname,$coupri,$couend,$tername){
+        if($ctr>0){
+            $data = array(
+                'cou_name'=>$couname,
+                'cou_price'=>$coupri,
+                'cou_end'=>$couend,
+                'ter_id'=>$tername
+            );
+            //print_r($data);
+            $this->BicycleListYRBModel->table("tb_coupon")->field("cou_name,cou_price,cou_end,ter_id")->add($data);
+    
+            $this->coupon();
+        }else {
+            $data = array(
+                "cou_name"=>$couname,
+                "cou_pri"=>$coupri,
+                "cou_end"=>$couend,
+                "ter_id"=>$tername
+            );
+            $this->BicycleListYRBModel->table("tb_coupon")->field("cou_name,cou_price,cou_end,ter_id")->where("cou_id = '$cou_id'")->save($data);
+            //print $ac_id;
+            $this->coupon();
+        }
+    }
 }
 
 ?>

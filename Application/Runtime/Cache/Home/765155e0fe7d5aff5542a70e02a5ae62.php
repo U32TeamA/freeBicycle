@@ -1,0 +1,259 @@
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href=http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap-datetimepicker.min.css>
+		<style>
+			#topbtn span{margin-right:5px;}
+            .search{height:33px;margin-left:10px;padding:0;}
+			#searchForm input{width:25%;}
+			#searchForm select{width:25%;}
+			.table tr th{text-align:center;}
+			.table{width:98%;margin:10px 10px 0 10px;}
+		</style>
+		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js"></script>
+		
+		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap-datetimepicker.min.js></script>
+		<script type="text/javascript" src=http://localhost:8080/freeBicycle/Public/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js></script>
+		<script type="text/javascript">
+		//type值为0，下一页，为-1，上一页，为正到指定页
+			function turnPage(pageNo,type){
+				var pageNo = parseInt(pageNo);
+				if(type == 0){
+					pageNo += 1;
+					if(pageNo > parseInt('<?php echo ($page["total"]); ?>'/10)+1){
+						alert('已经是最后一页了！');
+						pageNo = parseInt('<?php echo ($page["total"]); ?>'/10)+1;
+					}
+				}else if(type == -1){
+					pageNo -= 1;
+					if(pageNo == 0){
+						alert('已经是第一页了！');
+						pageNo = 1;
+					}
+				}else{
+					pageNo = type;
+				}
+				if( <?php echo ($page["total"]); ?> < 10 ){
+					return;
+				}
+				location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/coupon/pageNo/"+pageNo;
+			}
+			//验证
+			function inblur(obj,reg){
+				$(obj).parent().removeClass("has-success has-error");
+				$(obj).parent().find("span").removeClass("glyphicon-remove glyphicon-remove");
+				if(reg.test(obj.value)){
+				$(obj).parent().addClass("has-success");
+				$(obj).parent().find("span").addClass("glyphicon-ok").css("color","green").show();
+				$(obj).tooltip("hide");
+					return true;
+				}else{
+					$(obj).parent().find("span").addClass("glyphicon-remove").css("color","red").show();
+					$(obj).tooltip("show");
+					$(obj).parent().addClass("has-error");
+						return false;
+				}
+			}
+			$(function(){
+				//平台列表
+				$("#stername option[value != 0]").remove();
+				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityTerrace"	
+				,function(data){
+					for(var i=0;i<data.length;i++){
+						$("#stername").append("<option value='"+data[i]['ter_name']+"'>"+data[i]['ter_name']+"</option>");
+					}
+				},"json");
+			});
+			//判断传入的值选择增加或者修改
+			function addedit(type){
+				//平台列表
+				$("#tername option[value != -1]").remove();
+				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityTerrace"	
+				,function(data){
+					for(var i=0;i<data.length;i++){
+						$("#tername").append("<option value='"+data[i]['ter_id']+"'>"+data[i]['ter_name']+"</option>");
+					}
+				},"json");
+				//
+				if(type == 1){
+					$("#ctr").val("1");
+					$("#acname").val("");
+					$("#acurl").val("");
+					$("#issuetime").val("");
+					$("#addandedit").modal("toggle");
+				}else{
+					var num = $("input[name=num]:checked");
+					if(num.length != 1){
+						alert("请选择一项进行操作！");
+						return;
+					}
+					$("#ctr").val("0");
+					$("#cou_id").val(num.val());
+					//回填
+					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/couponSearch",{
+						"couid":num.val()
+					},function(data){
+						$("#couname").val(data[0]['cou_name']);
+						$("#coupri").val(data[0]['cou_price']);
+						$("#couend").val(data[0]['cou_end']);
+					},"json");
+					$("#addandedit").modal("toggle");	
+				}
+			}
+			//删除活动
+	 		function hide(){
+	 			var num = $("input[name=num]:checked");
+				if(num.length != 1){
+					alert("请选择一项进行操作！");
+					return;
+				}
+				if(confirm('确认删除该条吗？')){
+					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/couponListHide",{
+						"couid":num.val()	
+					},function(data){
+							
+					},"json");
+				}else{
+					alert('操作已经取消！');
+					return;
+				}
+	 		}
+			//跳到中奖表
+			function turnwin(){
+				location.href="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadWinnersList";
+			}
+			//time
+			$(function(){
+				$("#couend").datetimepicker({
+					   format:'yyyy-mm-dd',
+					        weekStart: 1,
+					        todayBtn:  1,
+							autoclose: 1,
+							todayHighlight: 1,
+							startView: 2,
+							forceParse: 0,
+					        showMeridian: 1
+					    });
+			});
+			
+			//重置按钮事件 
+			function clearBtn(){
+				$("#sname").val(""); 
+				$("#spri").val("");
+				$("#stime").val("");
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">
+    		  <button type="button" class="btn btn-default" onclick="addedit(1);"><span class="glyphicon glyphicon-plus"></span>新增</button>
+    		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
+    		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
+    		  <!-- 条件搜索 -->
+	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/coupon" method="post">
+	   		  		<div class="input-group">
+		   		  		<input type="text" class="form-control" id="sname" name="sname" value="<?php echo ($page["sname"]); ?>" placeholder="优惠券名关键字">
+				      	<input type="text" class="form-control" id="spri" name="spri" value="<?php echo ($page["spri"]); ?>" placeholder="面额关键字">
+				      	<input type="text" class="form-control" id="stime" name="stime" value="<?php echo ($page["stime"]); ?>" placeholder="失效时间">
+				      	<select id="stername" name="stername" class="form-control">
+							<option value="0">请选择活动平台</option>
+						</select>
+				      	<span class="input-group-btn">
+				        	<button class="btn btn-default" type="submit">搜索</button>
+				        	<button class="btn btn-default" id="resetBtn" onclick="clearBtn();">清除</button>
+				      	</span>
+			    	</div>
+	   		  </form>
+	   		</div>
+			<table class="table table-striped table-bordered table-condensed text-center table-hover">
+				<tr>
+					<th><input type="checkbox" name="nums" id="nums"/></th><th>优惠券名</th><th>优惠券面额</th><th>失效时间</th><th>发布平台</th>
+				</tr>
+				<?php if(is_array($page["rows"])): $i = 0; $__LIST__ = $page["rows"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$rows): $mod = ($i % 2 );++$i;?><tr>
+					<td><input type="checkbox" name="num" id="num" value="<?php echo ($rows["cou_id"]); ?>"/></td>
+					<td><?php echo ($rows["cou_name"]); ?></td>
+					<td class="myurl"><?php echo ($rows["cou_price"]); ?></td>
+					<td><?php echo ($rows["cou_end"]); ?></td>
+					<td><?php echo ($rows["tname"]); ?></td>
+					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+			</table>
+			<!-- 翻页按钮 -->
+			<nav aria-label="Page navigation" class="text-center">
+			  <ul class="pagination">
+			  	<li><a href="javascript:void(0);">第<?php echo ($page["pageNo"]); ?>页</a></li>
+			    <li>
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',-1);" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',1);">1</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',2);">2</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',3);">3</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',4);">4</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',5);">5</a></li>
+			    <li>
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',0);" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>
+			    <li><a href="javascript:void(0);">共<?php echo ($page["total"]); ?>条数据</a></li>
+			  </ul>
+			</nav>
+		</div>
+		<!-- 模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="addandedit">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">增加/修改优惠券</h4>
+		      </div>
+		      <div class="modal-body">
+		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/couponListEdit" method="post" class="text-center" enctype="multipart/form-data">
+		        	<input type="hidden" name="ctr" id="ctr"/>
+		        	<input type="hidden" name="cou_id" id="cou_id"/>
+		        	<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">优惠券名</div>
+							<input id="couname" name="couname" type="text" class="form-control" onblur="inblur(this,/([^\s])/)"/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">优惠券面额</div>
+							<input id="coupri" name="coupri" type="text" class="form-control" placeholder="0.00" onblur="inblur(this,/([^\s])/)"/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<div class="input-group ">
+							<div class="input-group-addon">失效时间</div>
+							<input id="couend" name="couend" type="text" class="form-control input-append date" readonly/>
+							<span class="glyphicon form-control-feedback"></span>
+						</div>
+					</div>
+		        	<div class="form-group form-inline">
+						<div class="input-group">
+							<div class="input-group-addon">发布平台</div>
+							<select id="tername" name="tername" class="form-control" style="width:170px">
+								<option value="-1">请选择活动平台</option>
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			        <input type="submit" class="btn btn-primary" value="确认">
+			      </div>
+		        </form>
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div>
+	</body>
+</html>
