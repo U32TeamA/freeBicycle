@@ -40,14 +40,7 @@
 				if( {$page.total} < 10 ){
 					return;
 				}
-				//var query = '';
-				//if({$page.sname}){
-				//	query += (sname/{$page.sname});
-				//}
-				//if({$page.surl}){
-				//	query += (surl/{$page.surl});
-				//}
-				location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activity/pageNo/"+pageNo;
+				location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/announcement/pageNo/"+pageNo;
 			}
 			//验证
 			function inblur(obj,reg){
@@ -101,12 +94,12 @@
 					$("#ctr").val("0");
 					$("#ac_id").val(num.val());
 					//回填
-					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activitySearch",{
-						"acid":num.val()
+					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/announcementSearch",{
+						"anid":num.val()
 					},function(data){
-						$("#acname").val(data[0]['ac_name']);
-						$("#acurl").val(data[0]['ac_url']);
-						$("#issuetime").val(data[0]['ac_time']);
+						$("#acname").val(data[0]['an_name']);
+						$("#acurl").val(data[0]['an_url']);
+						$("#issuetime").val(data[0]['an_time']);
 					},"json");
 					$("#addandedit").modal("toggle");	
 				}
@@ -119,8 +112,8 @@
 					return;
 				}
 				if(confirm('确认删除该条吗？')){
-					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityListHide",{
-						"acid":num.val()	
+					$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/announcementListHide",{
+						"anid":num.val()	
 					},function(data){
 							
 					},"json");
@@ -170,27 +163,6 @@
 					}
 				});
 			});
-			//复制
-			
-			
-			//function copyurl(){
-			//	var num = $("input[name=num]:checked");
-			//	if(num.length != 1){
-			//		alert("请选择一项进行操作！");
-			//		return;
-				//}
-				//$('#copyurlbtn').zclip({   
-			  //      path: 'ZeroClipboard.swf',   
-			  //      copy: function(){
-			   //         return num.next(".myurl").text();
-			    //    	alert(num.next(".myurl").text());
-			    //    },   
-			    //    afterCopy: function(){
-			    //    	alert('复制成功！');
-			    //    //    $("<span id='msg'/>").insertAfter($('#copyurlbtn')).text('复制成功!');   
-			   //     }   
-			   // }); 
-			//}
 		</script>
 	</head>
 	<body>
@@ -200,12 +172,11 @@
     		  <button type="button" class="btn btn-default" onclick="addedit(0);"><span class="glyphicon glyphicon-edit"></span>操作</button>
     		  <button type="button" class="btn btn-default" onclick="hide();"><span class="glyphicon glyphicon-trash"></span>删除</button>
     		  <button type="button" class="btn btn-default" onclick="turnwin();"><span class="glyphicon glyphicon-user"></span>中奖名单</button>
-    		  <button type="button" class="btn btn-default" id="copyurlbtn" onclick="copyurl()"><span class="glyphicon glyphicon-copy"></span>复制选中的链接</button>
     		  <!-- 条件搜索 -->
-	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activity" method="post">
+	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/announcement" method="post">
 	   		  		<div class="input-group">
 		   		  		<input type="text" class="form-control" id="sname" name="sname" value="{$page.sname}" placeholder="主题关键字">
-				      	<input type="text" class="form-control" id="surl" name="surl" value="{$page.surl}" placeholder="地址关键字">
+				      	<input type="text" class="form-control" id="surl" name="surl" value="{$page.surl}" placeholder="链接关键字">
 				      	<input type="text" class="form-control" id="stime" name="stime" value="{$page.stime}" placeholder="发布时间">
 				      	<select id="stername" name="stername" class="form-control">
 							<option value="0">请选择活动平台</option>
@@ -219,14 +190,14 @@
 	   		</div>
 			<table class="table table-striped table-bordered table-condensed text-center table-hover">
 				<tr>
-					<th><input type="checkbox" name="nums" id="nums"/></th><th>活动主题</th><th>活动链接</th><th>发布时间</th><th>活动平台</th>
+					<th><input type="checkbox" name="nums" id="nums"/></th><th>公告主题</th><th>公告链接</th><th>发布时间</th><th>发布平台</th>
 				</tr>
 				<volist name="page.rows" id="rows">
 					<tr>
-					<td><input type="checkbox" name="num" id="num" value="{$rows.ac_id}"/></td>
-					<td>{$rows.ac_name}</td>
-					<td class="myurl">{$rows.ac_url}</td>
-					<td>{$rows.ac_time}</td>
+					<td><input type="checkbox" name="num" id="num" value="{$rows.an_id}"/></td>
+					<td>{$rows.an_name}</td>
+					<td class="myurl">{$rows.an_url}</td>
+					<td>{$rows.an_time}</td>
 					<td>{$rows.tname}</td>
 					</tr>
 				</volist>
@@ -260,22 +231,22 @@
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		        <h4 class="modal-title">增加/修改活动</h4>
+		        <h4 class="modal-title">增加/修改公告</h4>
 		      </div>
 		      <div class="modal-body">
-		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityListEdit" method="post" class="text-center" enctype="multipart/form-data">
+		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/announcementListEdit" method="post" class="text-center" enctype="multipart/form-data">
 		        	<input type="hidden" name="ctr" id="ctr"/>
 		        	<input type="hidden" name="ac_id" id="ac_id"/>
 		        	<div class="form-group form-inline">
 						<div class="input-group ">
-							<div class="input-group-addon">活动主题</div>
+							<div class="input-group-addon">公告主题</div>
 							<input id="acname" name="acname" type="text" class="form-control" onblur="inblur(this,/([^\s])/)"/>
 							<span class="glyphicon form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group form-inline">
 						<div class="input-group ">
-							<div class="input-group-addon">活动链接</div>
+							<div class="input-group-addon">公告链接</div>
 							<input id="acurl" name="acurl" type="text" class="form-control" onblur="inblur(this,/([^\s])/)"/>
 							<span class="glyphicon form-control-feedback"></span>
 						</div>
@@ -289,7 +260,7 @@
 					</div>
 		        	<div class="form-group form-inline">
 						<div class="input-group">
-							<div class="input-group-addon">活动平台</div>
+							<div class="input-group-addon">发布平台</div>
 							<select id="tername" name="tername" class="form-control" style="width:170px">
 								<option value="-1">请选择活动平台</option>
 							</select>
@@ -297,7 +268,7 @@
 					</div>
 					<div class="form-group form-inline">
 						<div class="input-group">
-							<div class="input-group-addon">展示图片</div>
+							<div class="input-group-addon">上传图片</div>
 							<input type="file" id="picture" name="picture" style="display:none"/>
 							<!-- <input type="text" id="pictureBtn" class="form-control" placeholder="点击选择" readonly /> -->
 							<input type="button" id="pictureBtn" class="form-control" value="上传" onclick="pictureUp()" style="width:170px">

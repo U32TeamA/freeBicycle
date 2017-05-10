@@ -88,6 +88,9 @@
 				//
 				if(type == 1){
 					$("#ctr").val("1");
+					$("#acname").val("");
+					$("#acurl").val("");
+					$("#issuetime").val("");
 					$("#addandedit").modal("toggle");
 				}else{
 					var num = $("input[name=num]:checked");
@@ -150,7 +153,23 @@
 				$("#surl").val("");
 				$("#stime").val("");
 			}
-			
+			//上传
+			function pictureUp(){
+				$("#picture").click();				
+			}
+			$(function(){
+				$("#picture").change(function(){
+					var filet = $("#picture")[0].files[0].type;
+					var fileType = "image/jpeg,image/png,image/gif,image/x-icon";
+					if(fileType.indexOf(filet)>=0){
+						alert("上传成功！");
+						$("#pictureBtn").val($(this).val());
+					}else{
+						$("#pictureBtn").val();
+						alert("只支持png、ico、jpeg及gif格式！")
+					}
+				});
+			});
 			//复制
 			
 			
@@ -242,7 +261,7 @@
 		        <h4 class="modal-title">增加/修改活动</h4>
 		      </div>
 		      <div class="modal-body">
-		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityListEdit" method="post" class="text-center">
+		      	<form action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activityListEdit" method="post" class="text-center" enctype="multipart/form-data">
 		        	<input type="hidden" name="ctr" id="ctr"/>
 		        	<input type="hidden" name="ac_id" id="ac_id"/>
 		        	<div class="form-group form-inline">
@@ -272,6 +291,14 @@
 							<select id="tername" name="tername" class="form-control" style="width:170px">
 								<option value="-1">请选择活动平台</option>
 							</select>
+						</div>
+					</div>
+					<div class="form-group form-inline">
+						<div class="input-group">
+							<div class="input-group-addon">展示图片</div>
+							<input type="file" id="picture" name="picture" style="display:none"/>
+							<!-- <input type="text" id="pictureBtn" class="form-control" placeholder="点击选择" readonly /> -->
+							<input type="button" id="pictureBtn" class="form-control" value="上传" onclick="pictureUp()" style="width:170px">
 						</div>
 					</div>
 					<div class="modal-footer">
