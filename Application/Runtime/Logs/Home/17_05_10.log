@@ -1,0 +1,98 @@
+[ 2017-05-10T08:42:52+08:00 ] 127.0.0.1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0156s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0156s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0156s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.171601s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.171601s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.015600s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2017-05-10T08:43:45+08:00 ] 127.0.0.1 /freeBicycle/index.php/Home/BicycleListYRB/activity
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_activity` [ RunTime:0.0156s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_activity ac LEFT JOIN tb_terrace te on te.ter_id=ac.ter_id  LIMIT 1   [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tb_activity` [ RunTime:0.0000s ]
+SQL: SELECT ac.*,te.ter_name as tname FROM tb_activity ac LEFT JOIN tb_terrace te on te.ter_id=ac.ter_id  LIMIT 0,10   [ RunTime:0.0000s ]
+NOTIC: [8] Use of undefined constant activity - assumed 'activity' D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php 第 136 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.124800s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.124800s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-05-10T08:43:45+08:00 ] 127.0.0.1 /freeBicycle/index.php/Home/BicycleListYRB/activityTerrace
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.015600s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.015600s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_terrace` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_terrace`  [ RunTime:0.0000s ]
+
+[ 2017-05-10T08:43:47+08:00 ] 127.0.0.1 /freeBicycle/index.php/Home/BicycleListYRB/announcement
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0156s ]
+SQL: SHOW COLUMNS FROM `tb_announcement` [ RunTime:0.0156s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_announcement an LEFT JOIN tb_terrace te on te.ter_id=an.ter_id  LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_announcement` [ RunTime:0.0000s ]
+SQL: SELECT an.*,te.ter_name as tname FROM tb_announcement an LEFT JOIN tb_terrace te on te.ter_id=an.ter_id  LIMIT 0,10   [ RunTime:0.0000s ]
+NOTIC: [8] Use of undefined constant announcement - assumed 'announcement' D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php 第 234 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.015600s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.124801s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.124801s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.015600s ]
+
+[ 2017-05-10T08:43:47+08:00 ] 127.0.0.1 /freeBicycle/index.php/Home/BicycleListYRB/activityTerrace
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015600s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_terrace` [ RunTime:0.0000s ]
+SQL: SELECT * FROM `tb_terrace`  [ RunTime:0.0000s ]
+
