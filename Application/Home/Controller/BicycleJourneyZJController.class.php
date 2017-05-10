@@ -206,12 +206,77 @@ class BicycleJourneyZJController extends Controller{
         $total = $this->adminZJmodel->table("tb_win")->count();
         //查询当前页展示的数据
         $rows = $this->adminZJmodel->table("tb_win w")->join("tb_user u on u.u_id=w.u_id")->join("tb_prize pr on pr.pr_id=w.pr_id")
-        ->where($query)->field("w.wi_id,u.u_account,pr.pr_name,w.wi_time")->select();
+        ->where($query)->field("w.wi_id,u.u_account,pr.pr_name,w.wi_time")->page($pageNo,$pageSize)->select();
         $page = array("pageNo"=>$pageNo,"pageSize"=>$pageSize,"total"=>$total,"rows"=>$rows,"searchUser"=>$searchUser,"searchName"=>$searchName);
         //返回列表页面
         $this->assign("page",$page);
         $this->display("ZJ/loadWinnersList");
     }
+    /**
+     * 同步加载并返回用户押金信息列表
+     * @param number $pageNo
+     * @param number $pageSize
+     */
+    public function loadPledgeList($pageNo=1,$pageSize=10){
+        //查询总数量
+        $total = $this->adminZJmodel->table("tb_pledge")->count();
+        //查询当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_pledge pl,tb_user u")
+        ->field("pl.pl_id,pl.pl_no,u.u_account,pl.pl_money,pl.pl_time")
+        ->page($pageNo,$pageSize)->where("pl.u_id=u.u_id")->select();
+        $page = array("pageNo"=>$pageNo,"pageSize"=>$pageSize,"total"=>$total,"rows"=>$rows);
+        //返回列表页面
+        $this->assign("page",$page);
+        $this->display("ZJ/loadPledgeList");
+    }
+    /**
+     * 搜索用户押金信息并返回列表
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $searchUser
+     * @param string $searchNo
+     */
+    public function searchPledgeList($pageNo=1,$pageSize=10,$searchUser=null,$searchNo=null){
+        //字符串作为查询条件
+        $query = "1=1 ";
+        if($searchUser != "" && $searchUser != null){
+            $query .= "and u_account like '%$searchUser%'";
+        }
+        if($searchNo != "" && $searchNo != null){
+            $query .= "and pl_no like '%$searchNo%'";
+        }
+        //查询总数据
+        $total = $this->adminZJmodel->table("tb_pledge")->count();
+        //查询当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_pledge pl")->join("tb_user u on u.u_id=pl.u_id")
+        ->where($query)->field("pl.pl_id,pl.pl_no,u.u_account,pl.pl_money,pl.pl_time")->page($pageNo,$pageSize)->select();
+        $page = array("pageNo"=>$pageNo,"pageSize"=>$pageSize,"total"=>$total,"rows"=>$rows,"searchUser"=>$searchUser,"searchNo"=>$searchNo);
+        //返回列表页面
+        $this->assign("page",$page);
+        $this->display("ZJ/loadPledgeList");
+    }
+    /**
+     * 通过id查询用户押金信息
+     * @param int $pl_id
+     */
+    public function loadPledgeById($pl_id){
+        $user = $this->adminZJmodel->table("tb_pledge pl,tb_user u")->field("pl.pl_no,u.u_account,pl.pl_money")
+        ->where("pl.u_id=u.u_id and pl_id=%d",$pl_id)->select();
+        $this->ajaxReturn($user[0]);
+    }
+    /**
+     * 修改押金返还信息
+     */
+    public function editPledgeBack($pl_no,$pl_money,$pl_back){
+        $data = array(
+          "pl_money"=>0,
+          "pl_back"=>$pl_back
+        );
+        //通过编号修改押金信息表的押金退还情况
+        $this->adminZJmodel->table("tb_pledge")->field("pl_money,pl_back")->where("pl_no='%s'",$pl_no)->save($data);
+        $this->loadPledgeList();
+    }
+    
 }
 
 ?>
