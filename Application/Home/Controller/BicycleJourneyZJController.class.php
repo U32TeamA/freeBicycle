@@ -265,18 +265,54 @@ class BicycleJourneyZJController extends Controller{
         $this->ajaxReturn($user[0]);
     }
     /**
+     * 通过id数组查询用户押金信息
+     */
+    public function loadPledgeByIds(){    
+        $getid = $_REQUEST['pl_ids'];
+        //print_r($getid);
+        $map['pl.pl_id'] = array ('in',$getid);       
+        $user = $this->adminZJmodel->table("tb_pledge pl")->join("tb_user u on u.u_id=pl.u_id")->field("u.u_account")
+        ->where($map)->select();
+        $this->ajaxReturn($user);
+    }
+    /**
      * 修改押金返还信息
      */
     public function editPledgeBack($pl_no,$pl_money,$pl_back){
         $data = array(
-          "pl_money"=>0,
+          "pl_money"=>99-$pl_money,
           "pl_back"=>$pl_back
         );
         //通过编号修改押金信息表的押金退还情况
         $this->adminZJmodel->table("tb_pledge")->field("pl_money,pl_back")->where("pl_no='%s'",$pl_no)->save($data);
         $this->loadPledgeList();
     }
-    
+    /**
+     * 搜索用户押金退还记录信息并返回列表
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $searchUser
+     * @param string $searchNo
+     */
+    public function PledgeBackInfo($pageNo=1,$pageSize=10,$searchUser=null,$searchNo=null){
+        //字符串作为查询条件
+        $query = "pl.pl_back=1 ";
+        if($searchUser != "" && $searchUser != null){
+            $query .= "and u_account like '%$searchUser%'";
+        }
+        if($searchNo != "" && $searchNo != null){
+            $query .= "and pl_no like '%$searchNo%'";
+        }
+        //查询总数据
+        $total = $this->adminZJmodel->table("tb_pledge")->where("pl_back=1")->count();
+        //查询当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_pledge pl")->join("tb_user u on u.u_id=pl.u_id")
+        ->where($query)->field("pl.pl_no,u.u_account,pl.pl_money,pl.pl_back")->page($pageNo,$pageSize)->select();
+        $page = array("pageNo"=>$pageNo,"pageSize"=>$pageSize,"total"=>$total,"rows"=>$rows,"searchUser"=>$searchUser,"searchNo"=>$searchNo);
+        //返回列表页面
+        $this->assign("page",$page);
+        $this->display("ZJ/PledgeBackInfo");
+    }
 }
 
 ?>

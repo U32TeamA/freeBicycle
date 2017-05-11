@@ -81,6 +81,28 @@
 				$(obj).find("input").prop("checked","checked");
 			}
 		}
+		//全选
+		function chooseALL(){
+			$("#choose input").prop("checked",true);		
+		}
+		//批量退还押金
+		function openWin2(){
+			if($("#choose input").prop("checked")){
+				//获取复选框选中的多个值
+				var pl_ids = [];
+				$("#choose input:checked").each(function(){
+					pl_ids.push($(this).val());
+				});
+				//alert(checks);
+				$.post("http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadPledgeByIds",{pl_ids:pl_ids},function(data){
+					//alert(JSON.stringify(data))
+					$("#u_account").val(data.u_account);
+				},"josn");
+				$("#myModal2").modal("show");
+			}else{
+				alert("请先全选数据");
+			}			
+		}
 		</script>
 	</head>
 	<body>
@@ -92,13 +114,13 @@
    		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;margin-left:0.1%;" onclick="openWin();">
    		  		<span class="glyphicon glyphicon-edit"></span>押金退还
    		  	</button>
-   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;margin-left:0.1%;">
+   		  	<button type="button" class="btn btn-default" style="margin-top:0.8%;margin-left:0.1%;" onclick="openWin2();">
    		  		<span class="glyphicon glyphicon-folder-open"></span>批量退还
    		  	</button>
-   		  	<a href="#" type="button" class="btn btn-default" style="margin-top:0.8%;margin-left:0.1%;">
+   		  	<a href="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/PledgeBackInfo" type="button" class="btn btn-default" style="margin-top:0.8%;margin-left:0.1%;">
    		  		<span class="glyphicon glyphicon-share-alt"></span>查看退还记录
    		  	</a>
-   		  	<!-- 模态窗 -->
+   		  	<!-- 模态窗1 -->
 			<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
 			    <div class="modal-dialog" role="document">
 				    <div class="modal-content">
@@ -136,6 +158,37 @@
 				    </div>
 			    </div>
 			</div>
+			<!-- 模态窗2 -->
+			<div class="modal fade" tabindex="-1" role="dialog" id="myModal2">
+			    <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title">批量退还</h4>
+				      </div>
+				      <div class="modal-body">
+				      	  <form id="ff" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/saveAllPledge" method="post">
+							<input type="hidden" name="plid" id="plid"/>
+							<div class="form-group">
+								<label>用户帐号：</label>
+								<input type="text" class="form-control" id="u_account" name="u_account" readonly>				
+							</div>
+							<div class="form-group">
+								<label>是否退还押金：</label>
+								<select style="width:100%;height:30px;" name="pl_back">
+									<option value="0">否</option>
+									<option value="1" selected>是</option>
+								</select>
+							</div>					
+				      	    <div class="modal-footer">
+						        <button type="reset" class="btn btn-default">取消</button>
+						        <button type="submit" class="btn btn-primary">确认</button>
+					        </div>
+					      </form>
+				      </div>			      
+				    </div>
+			    </div>
+			</div>
    		  	<!-- 条件搜索 -->
    		  	<form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/searchPledgeList" method="post"
    		  		  class="navbar-form navbar-right" role="search">
@@ -150,7 +203,7 @@
    		<!-- 列表展示 -->
 		<table class="table table-striped table-bordered table-condensed" style="width:98%;margin:10px 10px 0 10px;">
 			<tr>
-				<th><input type="checkbox" name="" value="全选"/>全选</th>
+				<th style="width:10%"><input id="checks" type="checkbox" name="" onclick="chooseALL()" />全选当前数据</th>
 				<th>押金编号</th>
 				<th>用户帐号</th>
 				<th>押金金额</th>
@@ -158,7 +211,7 @@
 			</tr>
 			<foreach name="page.rows" item="rows">
 				<tr onclick="checkedThis(this)">
-					<td><input type="checkbox" name="ids" value="{$rows.pl_id}"/></td>
+					<td id="choose"><input type="checkbox" name="ids" value="{$rows.pl_id}"/></td>
 					<td>{$rows.pl_no}</td>
 					<td style="color:green;">{$rows.u_account}</td>
 					<td style="color:blue;">{$rows.pl_money}</td>
