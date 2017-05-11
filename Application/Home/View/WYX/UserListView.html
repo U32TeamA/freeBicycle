@@ -9,11 +9,68 @@
 	src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript"
 	src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>
+<style type="text/css">
+#topbtn .glyphicon {
+	margin-right: 5px;
+}
+
+.search {
+	height: 33px;
+	margin-left: 10px;
+	padding: 0;
+}
+
+#searchForm input {
+	float: right;
+	width: 50%;
+}
+
+.table tr th {
+	text-align: center;
+}
+.pagination:HOVER {
+	cursor: pointer;
+}
+</style>
+<script type="text/javascript">
+	function resetSearch(){
+		$("#search").val("");
+		$("#btnSearch").click();
+	}
+	
+	//type值为0转到下一页，为-1转到上一页，为正到指定页
+	function turnPage(page, total, pageNo) {
+		if (pageNo < 0) {
+			pageNo += page;
+		} else if (pageNo == 0) {
+			pageNo = page + 1;
+		}
+		location.href = "http://localhost:8080/freeBicycle/index.php/Home/WYX/showUserList/pageNo/"
+				+ pageNo;
+	}
+	$(function(){
+		var pageNo = {$page.pageNo};
+		var totalPage = {$page.totalPage};
+		switch(pageNo){
+		case totalPage:
+			$("#next").addClass("disabled").removeAttr("onclick");
+			break;
+		case 1:
+			$("#previous").addClass("disabled").removeAttr("onclick");
+			break;
+		}
+		$(".page").each(function(index){
+			if(index == pageNo-1){
+				$(this).addClass("active");
+			}
+		});
+	});
+	
+</script>
 </head>
 <body>
 	<div class="container">
-		<div id="topbtn" class="btn-group" role="group"
-			style="width: 98%; margin: 10px 10px 0 10px;">
+		<div id="topbtn" class="btn-group" role="group" style="width: 98%; margin: 10px 10px 0 10px;">
 			<button type="button" class="btn btn-default"
 				onclick="turnPage(1,1);">
 				<span class="glyphicon glyphicon-refresh"></span>刷新
@@ -25,20 +82,17 @@
 				<span class="glyphicon glyphicon-file"></span>导出Excel
 			</button>
 			<!-- 条件搜索 -->
-			<form id="searchForm"
-				action="http://localhost:8080/freeBicycle/index.php/Home/UserWYX/showUserList"
-				method="post">
+			<form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/WYX/showUserList" method="post">
 				<div class="input-group">
-					<input type="text" class="form-control" id="suser" name="suser"
-						value="{$page.suser}" placeholder="用户帐号"> <input
-						type="text" class="form-control" id="sno" name="sno"
-						value="{$page.sno}" placeholder="单车编号"> <input type="text"
-						class="form-control" id="smodel" name="smodel"
-						value="{$page.smodel}" placeholder="单车型号"> <input
-						type="text" class="form-control" id="sstate" name="sstate"
-						value="{$page.sstate}" placeholder="单车状态"> <span
-						class="input-group-btn">
-						<button class="btn btn-default" type="submit">搜索</button>
+					<input type="text" class="form-control" id="search" name="search" value="{$page.search}" placeholder="输入用户编号、名称、手机号码或平台名称来搜索">
+					<span class="input-group-btn">
+						<button id="btnSearch" class="btn btn-default form-control" type="submit">
+							<span class="glyphicon glyphicon-search"></span>
+							搜索
+						</button>
+					</span>
+					<span class="input-group-btn">
+						<a id="reset" class="btn btn-default" href="javascript:resetSearch()">重置</a>
 					</span>
 				</div>
 			</form>
@@ -61,11 +115,17 @@
 				<td style="text-align: center">{$i}</td>
 				<td style="text-align: center"><input type="checkbox" name="No"
 					value="{$rows.u_id}"></td>
-				<td>{$rows.no}</td>
-				<td>{$rows.model}</td>
 				<td>{$rows.account}</td>
-				<td>{$rows.time}</td>
-				<td>{$rows.num}</td>
+				<td>{$rows.uname}</td>
+				<td><script>
+								if({$rows.gender}){
+									document.write("男");
+								}else{
+									document.write("女");
+								}
+    						</script></td>
+				<td>{$rows.phone}</td>
+				<td>{$rows.tname}</td>
 				<td><script>
 								if({$rows.freeze}){
 									document.write("是");
@@ -79,19 +139,22 @@
 		<!-- 翻页按钮 -->
 		<nav aria-label="Page navigation" class="text-center">
 			<ul class="pagination">
-				<li><a href="javascript:void(0);">第{$page.pageNo}页</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',-1);"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-				</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',1);">1</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',2);">2</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',3);">3</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',4);">4</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',5);">5</a></li>
-				<li><a href="javascript:turnPage('{$page.pageNo}',0);"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-				</a></li>
-				<li><a href="javascript:void(0);">共{$page.total}条数据</a></li>
+				<li id="previous" onclick="turnPage({$page.pageNo},{$page.totalPage},-1)">
+					<span>
+						<span aria-hidden="true">&laquo;</span>
+					</span>
+				</li>
+				<for start="0" end="$_SESSION['userlist']['totalPage']">
+					<li class="page">
+						<a href="javascript:turnPage({$page.pageNo},{$page.totalPage},{$i+1})">{$i+1}</a>
+					</li>
+				</for>
+				<li id="next" onclick="turnPage({$page.pageNo},{$page.totalPage},{$page.pageNo}+1)">
+					<span>
+						<span aria-hidden="true">&raquo;</span>
+					</span>
+				</li>
+				<li><span>共{$page.total}条数据</span></li>
 			</ul>
 		</nav>
 	</div>
