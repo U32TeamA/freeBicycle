@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -34,9 +34,9 @@
 			var pageNo = parseInt(pageNo);
 			if(type == 0){
 				pageNo += 1;
-				if(pageNo > parseInt('{$page.total}'/10)+1){
+				if(pageNo > parseInt('<?php echo ($page["total"]); ?>'/10)+1){
 					alert('已经是最后一页了！');
-					pageNo = parseInt('{$page.total}'/10)+1;
+					pageNo = parseInt('<?php echo ($page["total"]); ?>'/10)+1;
 				}
 			}else if(type == -1){
 				pageNo -= 1;
@@ -47,7 +47,7 @@
 			}else{
 				pageNo = type;
 			}
-			if( {$page.total} < 10 ){
+			if( <?php echo ($page["total"]); ?> < 10 ){
 				return;
 			}
 			location.href = "http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/story/pageNo/"+pageNo;
@@ -140,7 +140,7 @@
 		}
 		$(function(){
 			
-			//$("#pageLeft").append("<li><a href='javascript:turnPage({$page.pageNo},1);'>1</a></li>");
+			//$("#pageLeft").append("<li><a href='javascript:turnPage(<?php echo ($page["pageNo"]); ?>,1);'>1</a></li>");
 		});
 		</script>
 	</head>
@@ -153,9 +153,9 @@
     		  <!-- 条件搜索 -->
 	   		  <form id="searchForm" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/story" method="post">
 	   		  		<div class="input-group">
-		   		  		<input type="text" class="form-control" id="sname" name="sname" value="{$page.sname}" placeholder="故事标题关键字">
-				      	<input type="text" class="form-control" id="surl" name="surl" value="{$page.surl}" placeholder="链接关键字">
-				      	<input type="text" class="form-control" id="stime" name="stime" value="{$page.stime}" placeholder="发布时间">
+		   		  		<input type="text" class="form-control" id="sname" name="sname" value="<?php echo ($page["sname"]); ?>" placeholder="故事标题关键字">
+				      	<input type="text" class="form-control" id="surl" name="surl" value="<?php echo ($page["surl"]); ?>" placeholder="链接关键字">
+				      	<input type="text" class="form-control" id="stime" name="stime" value="<?php echo ($page["stime"]); ?>" placeholder="发布时间">
 				      	<select id="stername" name="stername" class="form-control">
 							<option value="0">请选择发布平台</option>
 						</select>
@@ -168,36 +168,34 @@
 	   		</div>
 			<table class="table table-striped table-bordered table-condensed text-center table-hover" style="width:98%;margin:10px 10px 0 10px;">
 				<tr><th><input type="checkbox" name=nums id=nums></th><th>故事主题</th><th>故事链接</th><th>发布时间</th><th>发布平台</th></tr>
-				<volist name="page.rows" id="rows">
-					<tr>
-						<td><input type="checkbox" name=num id=num value="{$rows.st_id}"></td>
-						<td>{$rows.st_name}</td>
-						<td>{$rows.st_url}</td>
-						<td>{$rows.st_time}</td>
-						<td>{$rows.ter_name}</td>
-					</tr>
-				</volist>
+				<?php if(is_array($page["rows"])): $i = 0; $__LIST__ = $page["rows"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$rows): $mod = ($i % 2 );++$i;?><tr>
+						<td><input type="checkbox" name=num id=num value="<?php echo ($rows["st_id"]); ?>"></td>
+						<td><?php echo ($rows["st_name"]); ?></td>
+						<td><?php echo ($rows["st_url"]); ?></td>
+						<td><?php echo ($rows["st_time"]); ?></td>
+						<td><?php echo ($rows["ter_name"]); ?></td>
+					</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 			</table>
 			<!-- 分页 -->
 			<nav aria-label="Page navigation" class="text-center">
 			  <ul class="pagination">
-			  	<li><a href="javascript:void(0);">第{$page.pageNo}页</a></li>
+			  	<li><a href="javascript:void(0);">第<?php echo ($page["pageNo"]); ?>页</a></li>
 			    <li id="pageLeft">
-			      <a href="javascript:turnPage('{$page.pageNo}',-1);" aria-label="Previous">
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',-1);" aria-label="Previous">
 			        <span aria-hidden="true">&laquo;</span>
 			      </a>
 			    </li>
-			    <li><a href="javascript:turnPage('{$page.pageNo}',1);">1</a></li>
-			    <li><a href="javascript:turnPage('{$page.pageNo}',2);">2</a></li>
-			    <li><a href="javascript:turnPage('{$page.pageNo}',3);">3</a></li>
-			    <li><a href="javascript:turnPage('{$page.pageNo}',4);">4</a></li>
-			    <li><a href="javascript:turnPage('{$page.pageNo}',5);">5</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',1);">1</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',2);">2</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',3);">3</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',4);">4</a></li>
+			    <li><a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',5);">5</a></li>
 			    <li>
-			      <a href="javascript:turnPage('{$page.pageNo}',0);" aria-label="Next">
+			      <a href="javascript:turnPage('<?php echo ($page["pageNo"]); ?>',0);" aria-label="Next">
 			        <span aria-hidden="true">&raquo;</span>
 			      </a>
 			    </li>
-			    <li><a href="javascript:void(0);">共{$page.total}条数据</a></li>
+			    <li><a href="javascript:void(0);">共<?php echo ($page["total"]); ?>条数据</a></li>
 			  </ul>
 			</nav>
 		</div>

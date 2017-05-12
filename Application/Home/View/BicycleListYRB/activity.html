@@ -128,6 +128,7 @@
 					alert('操作已经取消！');
 					return;
 				}
+				//window.loaction.href="http://localhost:8080/freeBicycle/index.php/Home/BicycleListYRB/activity";
 	 		}
 			//跳到中奖表
 			function turnwin(){
