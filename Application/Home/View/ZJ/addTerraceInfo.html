@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>添加单车平台信息</title>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css">
+		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>
+		<style type="text/css">
+			
+        </style>
+		<script type="text/javascript">
+		// bootstrap表单验证
+		function onb(obj, regExp) {
+			$(obj).parent().removeClass("has-success has-error");
+			$(obj).parent().find("span").removeClass("glyphicon-remove glyphicon-remove");
+			if(regExp.test(obj.value)) {				
+	     		$(obj).parent().addClass("has-success");
+	     		$(obj).parent().find("span").addClass("glyphicon-ok").css("color","green").show();
+				return true;	
+			} else {
+				$(obj).parent().addClass("has-error");
+				$(obj).parent().find("span").addClass("glyphicon-remove").css("color","red").show();
+				return false;
+			}	
+		}
+		//二次验证
+		function check() {
+			var ter_name = onb($("#ter_name")[0],  /[\u4E00-\u9FA5\uF900-\uFA2D]/);
+			var ter_address = onb($("#ter_address")[0],  /[\u4E00-\u9FA5\uF900-\uFA2D]/);
+			var ter_person = onb($("#ter_person")[0], /^[\u4e00-\u9fa5]{2,4}$/);
+			var ter_phone = onb($("#ter_phone")[0], /^1(3|5|7|8)[0-9]{9}$/);
+			if(ter_name && ter_address && ter_person && ter_phone) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		</script>
+	</head>
+	<body>
+	<div class="container">
+		<div id="topbtn" class="btn-group" role="group" style="width:98%;margin:10px 10px 0 10px;">   		  	
+   		  	<a href="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/loadTerraceList" type="button" class="btn btn-default" style="margin-top:0.8%;">
+   		  		<span class="glyphicon glyphicon-share-alt"></span>查看单车平台
+   		  	</a>
+   		  	<div class="panel panel-primary" style="width:50%;margin:auto;margin-top:50px;">
+   		  		<div class="panel-heading">
+   		  			<div class="panel-title">请填写单车平台信息</div>
+   		  		</div>
+   		  		<div class="panel-body">
+   		  			<form id="ff" action="http://localhost:8080/freeBicycle/index.php/Home/BicycleJourneyZJ/addTerrace" method="post">
+						<div class="form-group">
+							<label>平台名称：</label>
+							<input type="text" class="form-control" id="ter_name" name="ter_name" placeholder="请输入平台名称" onblur="onb(this,/[\u4E00-\u9FA5\uF900-\uFA2D]/)">
+							<span class="glyphicon form-control-feedback" style="padding-right:350px;padding-top:135px;"></span>
+						</div>
+						<div class="form-group">
+							<label>平台地址：</label>
+							<input type="text" class="form-control" id="ter_address" name="ter_address" placeholder="请输入平台地址" onblur="onb(this,/[\u4E00-\u9FA5\uF900-\uFA2D]/)">				
+							<span class="glyphicon form-control-feedback" style="padding-right:350px;padding-top:210px;"></span>
+						</div>
+						<div class="form-group">
+							<label>平台联系人：</label>
+							<input type="text" class="form-control" id="ter_person" name="ter_person" placeholder="请输入平台联系人" onblur="onb(this,/^[\u4e00-\u9fa5]{2,4}$/)">
+							<span class="glyphicon form-control-feedback" style="padding-right:350px;padding-top:284px;"></span>
+						</div>
+						<div class="form-group">
+							<label>平台联系电话：</label>
+							<input type="text" class="form-control" id="ter_phone" name="ter_phone" placeholder="请输入11位电话号码" onblur="onb(this,/^1(3|5|7|8)[0-9]{9}$/)">
+							<span class="glyphicon form-control-feedback" style="padding-right:350px;padding-top:355px;"></span>
+						</div>					
+			      	    <div class="form-group" style="text-align:center">
+					        <button type="reset" class="btn btn-default">取消</button>
+					        <button type="submit" class="btn btn-primary">确认</button>
+				        </div>
+				     </form>
+   		  		</div>
+   		  	</div>			
+		 </div>
+	</div>		
+	</body>
+</html>
