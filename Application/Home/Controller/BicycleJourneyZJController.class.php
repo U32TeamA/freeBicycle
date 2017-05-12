@@ -313,6 +313,48 @@ class BicycleJourneyZJController extends Controller{
         $this->assign("page",$page);
         $this->display("ZJ/PledgeBackInfo");
     }
+    /**
+     * 查询平台表
+     */
+    public function loadBicycleTerrace(){
+        $result = $this->adminZJmodel->table("tb_terrace")->select();
+        $this->ajaxReturn($result);
+    }
+    /**
+     * 同步加载并搜索平台信息列表并分页
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $tername
+     * @param string $user
+     */
+    public function loadTerraceList($pageNo=1,$pageSize=10,$tername='',$user=null){
+        //数组作为查询条件
+        $query = array();
+        if($tername != "选择单车平台" && $tername != null){
+            $query["ter_name"] = array("LIKE","%$tername%");
+        }
+        if($user != "" && $user != null){
+            $query["ter_person"] = array("LIKE","%$user%");
+        }
+        //查询总数量
+        $total = $this->adminZJmodel->table("tb_terrace")->where($query)->count();
+        //查询当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_terrace")->field("ter_id,ter_name,ter_address,ter_person,ter_phone")
+        ->where($query)->page($pageNo,$pageSize)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"tername"=>$tername,"user"=>$user);
+        //返回数据列表
+        $this->assign("page",$page);
+        $this->display("ZJ/loadTerraceList");
+    }
+    /**
+     * 新增平台
+     */
+    public function addTerrace($ter_name,$ter_address,$ter_person,$ter_phone){
+        $rows = array("ter_name"=>$ter_name,"ter_address"=>$ter_address,"ter_person"=>$ter_person,"ter_phone"=>$ter_phone);
+        $this->adminZJmodel->table("tb_terrace")->field("ter_name,ter_address,ter_person,ter_phone")->add($rows);
+        $this->loadTerraceList();
+    }
+    
 }
 
 ?>
