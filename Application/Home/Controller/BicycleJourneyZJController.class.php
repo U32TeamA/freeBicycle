@@ -354,7 +354,32 @@ class BicycleJourneyZJController extends Controller{
         $this->adminZJmodel->table("tb_terrace")->field("ter_name,ter_address,ter_person,ter_phone")->add($rows);
         $this->loadTerraceList();
     }
-    
+    /**
+     * 同步加载并搜索用户租赁记录信息
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $tername
+     * @param string $user
+     */
+    public function loadRentRecord($pageNo=1,$pageSize=10,$tername=null,$user=null){
+        //数组作为查询条件
+        $query = array();
+        if($tername != "选择单车平台" && $tername != null){
+            $query["ter_name"] = array("LIKE","%$tername%");
+        }
+        if($user != "" && $user != null){
+            $query["u_account"] = array("LIKE","%$user%");
+        }
+        //查询总数据
+        $total = $this->adminZJmodel->table("tb_rent")->where($query)->count();
+        //当前页展示的数据
+        $rows = $this->adminZJmodel->table("tb_rent re")->join("tb_user u on u.u_id=re.u_id")->join("tb_terrace ter on ter.ter_id=re.ter_id")
+        ->field("u.u_account,ter.ter_name,re.re_begin,re.re_end,re.re_money")->where($query)->page($pageNo,$pageSize)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"tername"=>$tername,"user"=>$user);
+        //返回页面
+        $this->assign("page",$page);
+        $this->display("ZJ/loadRentRecord");
+    }
 }
 
 ?>

@@ -356,6 +356,72 @@ class BicycleListYRBController extends Controller{
             $this->coupon();
         }
     }
+    /**
+     * 加载所有的故事列表
+     * @param number $pageNo
+     * @param number $pageSize
+     */
+    public function story($sname='',$surl='',$stime='',$stername='',$pageNo=1,$pageSize=10){
+        $query = array();
+        if ($sname != "" && $sname != null){
+            $query['st_name'] = array("LIKE","%$sname%");
+        }
+        if ($surl != "" && $surl != null){
+            $query['st_url'] = array("LIKE","%$surl%");
+        }
+        if ($stime != "" && $stime != null){
+            $query['st_time'] = array("LIKE","%$stime%");
+        }
+        if ($stername != '0' && $stername != null){
+            $query['ter_name'] = array("LIKE","%$stername%");
+        }
+        $total = $this->BicycleListYRBModel->table("tb_story st")->join("tb_terrace ter on st.ter_id=ter.ter_id","LEFT")->where($query)->count();
+        $rows = $this->BicycleListYRBModel->table("tb_story st")->join("tb_terrace ter on st.ter_id=ter.ter_id","LEFT")->field("st.*,ter.ter_name")->page($pageNo,$pageSize)->where($query)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"sname"=>$sname,"surl"=>$surl,"stime"=>$stime);
+        $this->assign("page",$page);
+        $this->display(story);
+    }
+    /**
+     * 根据id查询单行数据
+     * @param string $stid
+     */
+    public function storySearch($stid){
+        $rows = $this->BicycleListYRBModel->table("tb_story")->where("st_id = '$stid'")->select();
+        $this->ajaxReturn($rows);
+    }
+    /**
+     * 根据ctr，增加或修改故事
+     * @param unknown $ctr
+     * @param unknown $st_id
+     * @param unknown $stname
+     * @param unknown $sturl
+     * @param unknown $sttime
+     * @param unknown $tername
+     */
+    public function storyListEdit($ctr,$st_id,$stname,$sturl,$sttime,$tername){
+        $data = array(
+            "st_name"=>$stname,
+            "st_url"=>$sturl,
+            "st_time"=>$sttime,
+            "ter_id"=>$tername
+        );
+        if ($ctr == 1){
+            //增加
+            $this->BicycleListYRBModel->table("tb_story")->field("st_name,st_url,st_time,ter_id")->add($data);
+            $this->story();
+        }else {
+            $this->BicycleListYRBModel->table("tb_story")->field("st_name,st_url,st_time,ter_id")->where("st_id = '$st_id'")->save($data);
+            $this->story();
+        }
+    }
+    /**
+     * 根据id删除某列故事
+     * @param unknown $stid
+     */
+    public function storyDelete($stid){
+        $this->BicycleListYRBModel->table("tb_story")->where("st_id = '$stid'")->delete();
+        $this->story();
+    }
 }
 
 ?>
