@@ -422,6 +422,24 @@ class BicycleListYRBController extends Controller{
         $this->BicycleListYRBModel->table("tb_story")->where("st_id = '$stid'")->delete();
         $this->story();
     }
+    /**根据当前id查询管理员信息
+     * @param unknown $ad_id
+     */
+    public function myAccount(){
+        $myacc = $_REQUEST['myacc'];
+        $rows = $this->BicycleListYRBModel->table("tb_admin")->where("ad_account = '$myacc'")->select();
+        $this->assign("rows",$rows);
+        $this->display(myAccount);
+    }
+    public function passwordEdit($account,$password){
+        $data = array(
+            "ad_password"=>$password
+        );
+        $this->BicycleListYRBModel->table("tb_admin")->where("ad_account = '$account'")->field("ad_password")->save($data);
+        $rows = $this->BicycleListYRBModel->table("tb_admin")->where("ad_account = '$account'")->select();
+        $this->assign("rows",$rows);
+        $this->display(myAccount);
+    }
 }
 
 ?>

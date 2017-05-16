@@ -4,9 +4,7 @@
 		<meta charset=utf-8>
 		<title>登录</title>
 		<link rel="stylesheet" href="http://localhost:8080/freeBicycle/Public/bootstrap/css/bootstrap.min.css">
-		
-		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.11.0.min.js"></script>
-		
+		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/jquery-1.11.0.min.js"></script>	
 		<script src="http://localhost:8080/freeBicycle/Public/bootstrap/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
 			

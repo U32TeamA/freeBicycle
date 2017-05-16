@@ -2225,3 +2225,77 @@
 [11-May-2017 15:04:04 PRC] PHP  11. Think\Db\Driver->query($str = 'SELECT * FROM `tb_bicycle` WHERE ( st_id = \'3\' ) ', $fetchSql = FALSE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:946
 [11-May-2017 15:04:04 PRC] PHP  12. Think\Db\Driver->error() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:180
 [11-May-2017 15:04:04 PRC] PHP  13. E($msg = '1054:Unknown column \'st_id\' in \'where clause\'\n [ SQL璇彞 ] : SELECT * FROM `tb_bicycle` WHERE ( st_id = \'3\' ) ', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:350
+[16-May-2017 10:19:13 PRC] PHP PDOException:  SQLSTATE[HY000] [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+ in D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php on line 103
+[16-May-2017 10:19:13 PRC] PHP Stack trace:
+[16-May-2017 10:19:13 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 10:19:13 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 10:19:13 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 10:19:13 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 10:19:13 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[16-May-2017 10:19:13 PRC] PHP   6. controller($name = 'Xujie', $path = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:89
+[16-May-2017 10:19:13 PRC] PHP   7. Home\Controller\XujieController->__construct() D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:681
+[16-May-2017 10:19:13 PRC] PHP   8. Think\Model->__construct($name = 'tb_admin', $tablePrefix = *uninitialized*, $connection = *uninitialized*) D:\PHP-webapp\freeBicycle\Application\Home\Controller\XujieController.class.php:10
+[16-May-2017 10:19:13 PRC] PHP   9. Think\Model->db($linkNum = 0, $config = '', $force = TRUE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:97
+[16-May-2017 10:19:13 PRC] PHP  10. Think\Model->_checkTableInfo() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:1454
+[16-May-2017 10:19:13 PRC] PHP  11. Think\Model->flush() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:122
+[16-May-2017 10:19:13 PRC] PHP  12. Think\Db\Driver\Mysql->getFields($tableName = 'tb_admin') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:134
+[16-May-2017 10:19:13 PRC] PHP  13. Think\Db\Driver->initConnect($master = TRUE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php:47
+[16-May-2017 10:19:13 PRC] PHP  14. Think\Db\Driver->connect($config = *uninitialized*, $linkNum = *uninitialized*, $autoConnection = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:1075
+[16-May-2017 10:19:13 PRC] PHP  15. PDO->__construct('mysql:dbname=test;host=192.168.3.174;port=3306;charset=utf8', 'root', '123456', array (0 => TRUE, 3 => 2, 1002 => 'SET NAMES utf8', 8 => 2, 11 => 0, 17 => FALSE)) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:103
+[16-May-2017 10:19:13 PRC] PHP Think\Exception:  SQLSTATE[HY000] [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。
+ in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[16-May-2017 10:19:13 PRC] PHP Stack trace:
+[16-May-2017 10:19:13 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 10:19:13 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 10:19:13 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 10:19:13 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 10:19:13 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[16-May-2017 10:19:13 PRC] PHP   6. controller($name = 'Xujie', $path = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:89
+[16-May-2017 10:19:13 PRC] PHP   7. Home\Controller\XujieController->__construct() D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:681
+[16-May-2017 10:19:13 PRC] PHP   8. Think\Model->__construct($name = 'tb_admin', $tablePrefix = *uninitialized*, $connection = *uninitialized*) D:\PHP-webapp\freeBicycle\Application\Home\Controller\XujieController.class.php:10
+[16-May-2017 10:19:13 PRC] PHP   9. Think\Model->db($linkNum = 0, $config = '', $force = TRUE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:97
+[16-May-2017 10:19:13 PRC] PHP  10. Think\Model->_checkTableInfo() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:1454
+[16-May-2017 10:19:13 PRC] PHP  11. Think\Model->flush() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:122
+[16-May-2017 10:19:13 PRC] PHP  12. Think\Db\Driver\Mysql->getFields($tableName = 'tb_admin') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Model.class.php:134
+[16-May-2017 10:19:13 PRC] PHP  13. Think\Db\Driver->initConnect($master = TRUE) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver\Mysql.class.php:47
+[16-May-2017 10:19:13 PRC] PHP  14. Think\Db\Driver->connect($config = *uninitialized*, $linkNum = *uninitialized*, $autoConnection = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:1075
+[16-May-2017 10:19:13 PRC] PHP  15. E($msg = 'SQLSTATE[HY000] [2002] 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。\r\n', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Db\Driver.class.php:109
+[16-May-2017 15:26:52 PRC] PHP Think\Exception:  鏃犳硶鍔犺浇妯″潡:M=Home in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[16-May-2017 15:26:52 PRC] PHP Stack trace:
+[16-May-2017 15:26:52 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 15:26:52 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 15:26:52 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 15:26:52 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 15:26:52 PRC] PHP   5. Think\App::init() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:195
+[16-May-2017 15:26:52 PRC] PHP   6. Think\Dispatcher::dispatch() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:38
+[16-May-2017 15:26:52 PRC] PHP   7. E($msg = '鏃犳硶鍔犺浇妯″潡:M=Home', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Dispatcher.class.php:178
+[16-May-2017 15:28:01 PRC] PHP Think\Exception:  鍙傛暟閿欒鎴栬�呮湭瀹氫箟:ad_id in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[16-May-2017 15:28:01 PRC] PHP Stack trace:
+[16-May-2017 15:28:01 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 15:28:01 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 15:28:01 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 15:28:01 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 15:28:01 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[16-May-2017 15:28:01 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'myAccount') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[16-May-2017 15:28:01 PRC] PHP   7. E($msg = '鍙傛暟閿欒鎴栬�呮湭瀹氫箟:ad_id', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:157
+[16-May-2017 16:11:11 PRC] PHP Parse error:  syntax error, unexpected '{' in D:\PHP-webapp\freeBicycle\Application\Home\Controller\BicycleListYRBController.class.php on line 429
+[16-May-2017 16:11:11 PRC] PHP Stack trace:
+[16-May-2017 16:11:11 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 16:11:11 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 16:11:11 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 16:11:11 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 16:11:11 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[16-May-2017 16:11:11 PRC] PHP   6. controller($name = 'BicycleListYRB', $path = '') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:89
+[16-May-2017 16:11:11 PRC] PHP   7. class_exists('Home\\Controller\\BicycleListYRBController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[16-May-2017 16:11:11 PRC] PHP   8. spl_autoload_call('Home\\Controller\\BicycleListYRBController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[16-May-2017 16:11:11 PRC] PHP   9. Think\Think::autoload($class = 'Home\\Controller\\BicycleListYRBController') D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php:680
+[16-May-2017 16:23:14 PRC] PHP Think\Exception:  鍙傛暟閿欒鎴栬�呮湭瀹氫箟:myaccount in D:\PHP-webapp\freeBicycle\ThinkPHP\Common\functions.php on line 102
+[16-May-2017 16:23:14 PRC] PHP Stack trace:
+[16-May-2017 16:23:14 PRC] PHP   1. {main}() D:\PHP-webapp\freeBicycle\index.php:0
+[16-May-2017 16:23:14 PRC] PHP   2. require() D:\PHP-webapp\freeBicycle\index.php:24
+[16-May-2017 16:23:14 PRC] PHP   3. Think\Think::start() D:\PHP-webapp\freeBicycle\ThinkPHP\ThinkPHP.php:97
+[16-May-2017 16:23:14 PRC] PHP   4. Think\App::run() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\Think.class.php:120
+[16-May-2017 16:23:14 PRC] PHP   5. Think\App::exec() D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:204
+[16-May-2017 16:23:14 PRC] PHP   6. Think\App::invokeAction($module = class Home\Controller\BicycleListYRBController { private $BicycleListYRBModel = class Think\Model { protected $db = class Think\Db\Driver\Mysql { ... }; private $_db = array (...); protected $pk = 'bi_id'; protected $autoinc = TRUE; protected $tablePrefix = ''; protected $name = 'tb_bicycle'; protected $dbName = ''; protected $connection = ''; protected $tableName = ''; protected $trueTableName = 'tb_bicycle'; protected $error = ''; protected $fields = array (...); protected $data = array (...); protected $options = array (...); protected $_validate = array (...); protected $_auto = array (...); protected $_map = array (...); protected $_scope = array (...); protected $autoCheckFields = TRUE; protected $patchValidate = FALSE; protected $methods = array (...) }; protected $view = class Think\View { protected $tVar = array (...); protected $theme = '' }; protected $config = array () }, $action = 'myAccount') D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:110
+[16-May-2017 16:23:14 PRC] PHP   7. E($msg = '鍙傛暟閿欒鎴栬�呮湭瀹氫箟:myaccount', $code = *uninitialized*) D:\PHP-webapp\freeBicycle\ThinkPHP\Library\Think\App.class.php:157
