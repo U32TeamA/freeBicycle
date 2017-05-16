@@ -14,6 +14,7 @@
 		<script type="text/javascript">
 		function addTabs(title, url){
 			var b = $("#tabs").tabs("exists", title);
+			var myaccount = {$Think.session.loginUser.ad_account};
 			if(b){
 				$("#tabs").tabs("select", title);
 				$('#tabs').tabs('update', {
@@ -25,7 +26,7 @@
 					title: title,
 					selected: true,
 					closable: true,
-					content:'<iframe src="'+url+'" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>'
+					content:'<iframe src="'+url+"/myacc/"+myaccount+'" width="100%" height="100%" frameborder="0" scrolling="auto"></iframe>'
 				});
 			}
 		};
