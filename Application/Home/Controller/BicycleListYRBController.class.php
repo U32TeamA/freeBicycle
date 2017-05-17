@@ -431,6 +431,11 @@ class BicycleListYRBController extends Controller{
         $this->assign("rows",$rows);
         $this->display(myAccount);
     }
+    /**
+     * 修改自己的密码
+     * @param unknown $account
+     * @param unknown $password
+     */
     public function passwordEdit($account,$password){
         $data = array(
             "ad_password"=>$password
@@ -440,6 +445,7 @@ class BicycleListYRBController extends Controller{
         $this->assign("rows",$rows);
         $this->display(myAccount);
     }
+    
 }
 
 ?>
