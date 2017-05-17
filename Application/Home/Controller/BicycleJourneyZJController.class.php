@@ -380,6 +380,58 @@ class BicycleJourneyZJController extends Controller{
         $this->assign("page",$page);
         $this->display("ZJ/loadRentRecord");
     }
+    /**
+     * 同步加载并分页搜索返回单车消失信息列表
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $searchNo
+     * @param string $searchModel
+     */
+    public function bicycleDisappearList($pageNo=1,$pageSize=10,$searchNo=null,$searchModel=null){
+        //字符串作为查询条件
+        $query = "bc.bs_id=5 ";
+        if($searchNo != "" && $searchNo != null){
+            $query .= "and bc.bi_no like '%$searchNo%'";
+        }
+        if($searchModel != "" && $searchModel != null){
+            $query .= "and bc.bi_model like '%$searchModel%'";
+        }
+        //查询bs_id=5的单车表数量
+        $total = $this->adminZJmodel->table("tb_bicycle bc")->where($query)->count();
+        //查询当前页展示数据
+        $rows = $this->adminZJmodel->table("tb_bicycle bc")->join("tb_bicycle_state bcs on bcs.bs_id=bc.bs_id")
+        ->join("tb_terrace ter on ter.ter_id=bc.ter_id")->field("bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime")
+        ->where($query)->page($pageNo,$pageSize)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"searchNo"=>$searchNo,"searchModel"=>$searchModel);
+        //返回列表
+        $this->assign("page",$page);
+        $this->display("ZJ/bicycleDisappearList");
+    }
+    /**
+     * 异步请求通过单车编号查询消失单车详情
+     * @param string $bi_no
+     */
+    public function loadBicycleDisappear($bi_no){
+        //print_r($bi_no);
+        //查询某行数据单车详情
+        $result = $this->adminZJmodel->table("tb_bicycle bc")->join("tb_bicycle_state bcs on bcs.bs_id=bc.bs_id")
+        ->join("tb_terrace ter on ter.ter_id=bc.ter_id")->where("bi_no = '%s'",$bi_no)
+        ->field("bc.bi_no,bc.bi_model,bc.bi_journey,bcs.bs_name,ter.ter_name,bc.bi_putTime,bc.bi_NumOfUse")
+        ->select();
+        //print_r($result);
+        $this->ajaxReturn($result);
+    }
+    /**
+     * 通过单车编号修改消失单车信息
+     * @param string $bi_no
+     */
+    public function deleteDisappearBicycle($bi_no){
+        //把bs_id=5 修改为 6
+        $data = array("bs_id"=>6);
+        $result = $this->adminZJmodel->table("tb_bicycle")->where("bi_no='%s'",$bi_no)->save($data);
+        //$this->ajaxReturn($result);
+        $this->bicycleDisappearList();
+    }
 }
 
 ?>
