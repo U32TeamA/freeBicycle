@@ -74,8 +74,9 @@
 	</head>
 	<body class="easyui-layout">   
         <div data-options="region:'north',split:false,collapsible:false" style="height:50px;line-height:50px;">
-        	<span>欢迎你，<?php echo ($_SESSION['loginUser']['ad_account']); ?>!</span>
-        	<a href="http://localhost:8080/freeBicycle/Application/Home/View/XJ/LoginView.php">退出</a>
+        	<span style="font-size:22px;">欢迎你，<?php echo ($_SESSION['loginUser']['ad_account']); ?>!</span>
+        	<a style="font-size:22px;" href="http://localhost:8080/freeBicycle/Application/Home/View/XJ/LoginView.php">退出</a>
+        	<a style="color:red;margin-left:50%;font-size:22px;">请操作完后及时刷新页面，以确保操作的准确性！</a>
         </div>   
         <div data-options="region:'west',title:'系统菜单',split:true" style="width:200px;">
         	<ul class="easyui-tree" animate='true' lines='true'> 
