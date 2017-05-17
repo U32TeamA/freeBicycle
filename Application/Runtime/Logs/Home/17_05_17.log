@@ -1,0 +1,633 @@
+[ 2017-05-17T09:31:34+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.078005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.079005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:31:39+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0220s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-05-17T09:31:48+08:00 ] ::1 /freeBicycle/index.php/Home/BicycleJourneyZJ/deleteDisappearBicycle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: UPDATE `tb_bicycle` SET `bs_id`='6' WHERE ( bi_no='10056' ) [ RunTime:0.0430s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-05-17T09:31:58+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008000s ]
+
+[ 2017-05-17T09:37:24+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0040s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.056003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2017-05-17T09:37:27+08:00 ] ::1 /freeBicycle/index.php/Home/BicycleJourneyZJ/deleteDisappearBicycle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:37:34+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.052003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-05-17T09:37:36+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.054003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-05-17T09:37:37+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.047003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.021002s ]
+
+[ 2017-05-17T09:37:38+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.055003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2017-05-17T09:37:41+08:00 ] ::1 /freeBicycle/index.php/Home/BicycleJourneyZJ/deleteDisappearBicycle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.055003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:37:43+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:38:31+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-05-17T09:38:34+08:00 ] ::1 /freeBicycle/index.php/Home/BicycleJourneyZJ/deleteDisappearBicycle
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: UPDATE `tb_bicycle` SET `bs_id`='6' WHERE ( bi_no='10056' ) [ RunTime:0.0360s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.047003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.049003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-05-17T09:38:35+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:39:42+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.054003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-05-17T09:39:45+08:00 ] ::1 /freeBicycle/index.php/Home/BicycleJourneyZJ/loadBicycleDisappear
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bc.bi_journey,bcs.bs_name,ter.ter_name,bc.bi_putTime,bc.bi_NumOfUse FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bi_no = '10056' )  [ RunTime:0.0010s ]
+
+[ 2017-05-17T09:53:28+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.049003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.051003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2017-05-17T09:53:29+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.066004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2017-05-17T09:53:36+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.089005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.090005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2017-05-17T09:54:16+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0030s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.098006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.101006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-05-17T09:54:25+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0030s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.086005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.088005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2017-05-17T09:54:54+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0010s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.081004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.083004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2017-05-17T09:55:32+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.083004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.085004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009000s ]
+
+[ 2017-05-17T09:56:37+08:00 ] ::1 /freeBicycle/index.php/Home/Xujie/login
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `tb_admin` WHERE ( ad_account=1001 )  [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `tb_admin` [ RunTime:0.0030s ]
+SQL: SELECT m.* FROM tb_admin ad,tb_menus m,tb_jurisdiction j WHERE ( ad.ad_id=j.ad_id and j.me_id=m.me_id and j.ad_id=1 )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.103006s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.107006s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2017-05-17T09:57:12+08:00 ] ::1 /freebicycle/index.php/Home/BicycleJourneyZJ/bicycleDisappearList/myacc/1001
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005001s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM tb_bicycle bc WHERE ( bc.bs_id=5  ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `tb_bicycle` [ RunTime:0.0030s ]
+SQL: SELECT bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime FROM tb_bicycle bc INNER JOIN tb_bicycle_state bcs on bcs.bs_id=bc.bs_id INNER JOIN tb_terrace ter on ter.ter_id=bc.ter_id  WHERE ( bc.bs_id=5  ) LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.055003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
