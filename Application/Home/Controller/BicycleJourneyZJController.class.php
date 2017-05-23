@@ -432,6 +432,37 @@ class BicycleJourneyZJController extends Controller{
         //$this->ajaxReturn($result);
         $this->bicycleDisappearList();
     }
+    /**
+     * 同步加载并分页返回低频单车列表
+     * @param number $pageNo
+     * @param number $pageSize
+     * @param string $searchNo
+     * @param string $searchModel
+     */
+    public function loadLowsBicycle($pageNo=1,$pageSize=10,$searchNo=null,$searchModel=null){
+        //字符串作为查询条件
+        $query = "bc.bs_id=1 ";
+        if($searchNo != "" && $searchNo != null){
+            $query .= "and bc.bi_no like '%$searchNo%'";
+        }
+        if($searchModel != "" && $searchModel != null){
+            $query .= "and bc.bi_model like '%$searchModel%'";
+        }
+        //查询bs_id=1的单车表数量
+        $total = $this->adminZJmodel->table("tb_bicycle bc")->where($query)->count();
+        //查询当前页展示数据
+        $rows = $this->adminZJmodel->table("tb_bicycle bc")->join("tb_bicycle_state bcs on bcs.bs_id=bc.bs_id")
+        ->join("tb_terrace ter on ter.ter_id=bc.ter_id")->field("bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime")
+        ->where($query)->page($pageNo,$pageSize)->select();
+        $page = array("total"=>$total,"rows"=>$rows,"pageNo"=>$pageNo,"pageSize"=>$pageSize,"searchNo"=>$searchNo,"searchModel"=>$searchModel);
+        //返回列表
+        $this->assign("page",$page);
+        $this->display("ZJ/loadLowsBicycle");
+    }
+    
+    
+    
+    
 }
 
 ?>

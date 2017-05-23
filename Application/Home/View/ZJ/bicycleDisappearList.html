@@ -33,14 +33,15 @@
 		}	
 		//EXCEL导出
 		function downExcel(){
-			$.post("http://localhost:8080/freeBicycle/index.php/Home/ExcelDownLoadZJ/excelDownLoad",
+			$.post("http://localhost:8080/freeBicycle/index.php/Home/ExcelDownLoadZhang/excelDownLoad",
 			{
 				"table"        : "tb_bicycle bc",
 				"join"         : "join tb_bicycle_state bcs on bcs.bs_id=bc.bs_id join tb_terrace ter on ter.ter_id=bc.ter_id",
+				"where"		   : "bc.bs_id=5",
 				"field"		   : "bc.bi_no,bc.bi_model,bcs.bs_name,ter.ter_name,bc.bi_putTime",
 				"tableHeader"  : ['单车编号','单车型号','单车状态','所属平台','单车投放时间']
 			},function(data){
-				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ExcelDownLoadZJ&a=down&name=单车消失信息表.xls&load=Public/tmpFiles/new.xls" ;
+				location.href = "http://localhost:8080/freeBicycle/index.php?m=Home&c=ExcelDownLoadZhang&a=down&name=单车消失信息表.xls&load=Public/tmpFiles/new.xls" ;
 			});
 		}
 		//重置按钮
